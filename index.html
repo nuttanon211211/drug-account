@@ -37,10 +37,10 @@
 
 
   from {
-  text-shadow: 0 0 10px #f00, 0 0 20px #fb61dc, 0 0 30px #734635, 0 0 40px #919191, 0 0 50px #d5d5d5, 0 0 60px #939393, 0 0 70px #8e8e8e;
+  text-shadow: 0 0 10px #f00, 0 0 20px #fb61dc, 0 0 30px #734635, 0 0 40px #919191, 0 0 50px #d5d5d5, 0 0 60px #939393;
 }
 to {
-  text-shadow: 0 0 10px #ff9191, 0 0 30px #ff9b31, 0 0 40px #fde83b, 0 0 50px #aca372, 0 0 60px #e8e1af, 0 0 70px #b0af45, 0 0 80px #9d9977;
+  text-shadow: 0 0 10px #ff9191, 0 0 30px #ff9b31, 0 0 40px #fde83b, 0 0 50px #aca372, 0 0 60px #e8e1af;
 }
 }
 
@@ -56,10 +56,10 @@ to {
 
 
   from {
-  text-shadow: 0 0 10px #00fbfb, 0 0 20px #0010ff, 0 0 30px #c4c4c4, 0 0 40px #919191, 0 0 50px #d5d5d5, 0 0 60px #939393, 0 0 70px #8e8e8e;
+  text-shadow: 0 0 10px #00fbfb, 0 0 20px #0010ff, 0 0 30px #c4c4c4, 0 0 40px #919191, 0 0 50px #d5d5d5, 0 0 60px #939393;
   }
 to {
-  text-shadow: 0 0 10px #19df01, 0 0 30px #0a8200, 0 0 40px #bfbfbf, 0 0 50px #aca372, 0 0 60px #e8e1af, 0 0 70px #b0af45, 0 0 80px #9d9977;
+  text-shadow: 0 0 10px #19df01, 0 0 30px #0a8200, 0 0 40px #bfbfbf, 0 0 50px #aca372, 0 0 60px #e8e1af;
 }
 }
 
@@ -146,9 +146,10 @@ to {
       position: relative;
     }
     a {
-      background-color: #fffbbb;
-      color: #311700;
+      background-color: #ff4e4e;
+      color: #150000;
       border-radius: 2px;
+      font-weight: bold;
 
     }
     </style>
@@ -444,7 +445,7 @@ to {
 
 <label for="paras">paragraph:</label>
 
-<select style="max-width: 28em;" name="paras" id="paras">
+<select style="max-width: 28em;" name="paras" id="paras" onchange="showOnlyPara( this.value );">
   <option value="0" onclick='showOnlyPara(0)'>1  GASTRO-INTESTINAL SYSTEM</option>
   <option value="1" onclick='showOnlyPara(1)'>2  CARDIOVASCULAR SYSTEM</option>
   <option value="2" onclick='showOnlyPara(2)'>3  RESPIRATORY SYSTEM</option>
