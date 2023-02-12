@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+
+    <link rel="apple-touch-icon" href="logo.png">
+
+    <meta name="msapplication-TileImage" content="logo.png">
+
+    <title>บัญชียาโรงพยาบาลพัทลุง</title>
+    <style>
+    p {
+    color:   #034003;
+    }
+    p.datah {
+     color:   #022b02;
+
+     visibility: collapse;
+    }
+    c.c1{
+      color:   #7bf700;
+      font-weight: bold;
+      -webkit-text-stroke: 0.5px #0c6200;
+      -webkit-animation: glow 3s linear infinite alternate;
+      -moz-animation: glow 3s linear infinite alternate;
+      animation: glow 3s linear infinite alternate;
+    }
+
+    @-webkit-keyframes glow {
+
+
+
+  from {
+  text-shadow: 0 0 10px #f00, 0 0 20px #fb61dc, 0 0 30px #734635, 0 0 40px #919191, 0 0 50px #d5d5d5, 0 0 60px #939393, 0 0 70px #8e8e8e;
+}
+to {
+  text-shadow: 0 0 10px #ff9191, 0 0 30px #ff9b31, 0 0 40px #fde83b, 0 0 50px #aca372, 0 0 60px #e8e1af, 0 0 70px #b0af45, 0 0 80px #9d9977;
+}
+}
+
+    c.c2 {
+      color: #9b2c00;
+      -webkit-text-stroke: 0.5px #b00000;
+      -webkit-animation: glow2 3s linear infinite alternate;
+      -moz-animation: glow2 3s linear infinite alternate;
+      animation: glow2 3s linear infinite alternate;
+    }
+    @-webkit-keyframes glow2 {
+
+
+
+  from {
+  text-shadow: 0 0 10px #00fbfb, 0 0 20px #0010ff, 0 0 30px #c4c4c4, 0 0 40px #919191, 0 0 50px #d5d5d5, 0 0 60px #939393, 0 0 70px #8e8e8e;
+  }
+to {
+  text-shadow: 0 0 10px #19df01, 0 0 30px #0a8200, 0 0 40px #bfbfbf, 0 0 50px #aca372, 0 0 60px #e8e1af, 0 0 70px #b0af45, 0 0 80px #9d9977;
+}
+}
+
+
+    div {
+      visibility: visible;
+    }
+    div.data {
+      visibility: visible;
+      font-size: 0.8em;
+      /*position: relative;*/
+    }
+    div.left {
+      position: fixed;
+      right: 3%;
+    }
+    div.datah {
+     visibility: hidden;
+     position: absolute;
+     font-size: 0.1em;
+    }
+
+
+    button{
+     color: #800084;
+    background-color: #ffd3ff;
+    border: 2px groove #ffd36b;
+    border-radius: 20px;
+
+    }
+
+    button:hover {
+     color: #a7787a;
+    background-color: #d0c1d0;
+    border: 2px groove #ddc58d;
+    border-radius: 20px;
+
+    }
+
+    button:active {
+     color: #fff073;
+    background-color: #b0b0b0;
+    border: 2px groove black;
+    border-radius: 20px;
+
+    }
+
+    button.button {
+
+
+    }
+
+    button.button {
+     -webkit-animation: glow3 3s linear infinite alternate;
+      -moz-animation: glow3 3s linear infinite alternate;
+      animation: glow3 3s linear infinite alternate;
+
+    }
+
+
+    button.leftmenu {
+/*       right: 3%; */
+      position: relative;
+      -webkit-text-stroke: 0.5px #b00000;
+      -webkit-animation: glow3 3s linear infinite alternate;
+      -moz-animation: glow3 3s linear infinite alternate;
+      animation: glow3 3s linear infinite alternate;
+    }
+
+    @-webkit-keyframes glow2 {
+
+
+
+  from {
+  text-shadow: 0 0 10px #00fbfb, 0 0 20px #0010ff, 0 0 30px #c4c4c4, 0 0 40px #919191, 0 0 50px #d5d5d5, 0 0 60px #939393, 0 0 70px #8e8e8e;
+  }
+to {
+  text-shadow: 0 0 10px #19df01, 0 0 30px #0a8200, 0 0 40px #bfbfbf, 0 0 50px #aca372, 0 0 60px #e8e1af, 0 0 70px #b0af45, 0 0 80px #9d9977;
+}
+}
+
+
+    br.fixed {
+      position: relative;
+    }
+    a {
+      background-color: #fffbbb;
+      color: #311700;
+      border-radius: 2px;
+
+    }
+    </style>
+    <script>
+    function cleanData(data) {
+      let data2 = data.replaceAll("\r"," ");
+      let data3 = data2.replaceAll("\n"," ");
+      data3 = data3.toUpperCase();
+      return data3.split(" ");
+
+    }
+
+    function genwordD(txt) {
+      return(create1gram(cleanData(txt)));
+
+    }
+
+    function create1gram(data) {
+       let out = {};
+       for (var i=0; i < data.length ; i++) {
+         if (Object.keys(out).indexOf(data[i]) == -1) {
+           out[data[i]] = 1;
+         }
+         else {
+           out[data[i]] += 1;
+         }
+       }
+
+       return out;
+    }
+
+    function countV(dict) {
+
+      let l = Object.values(dict);
+      let out = 0;
+      for (var i=0; i< l.length ; i++) {
+        out += l[i];
+      }
+      return out;
+
+
+    }
+
+    function wordDensity(word, dict) {
+      let c = 0.0;
+      if (Object.keys(dict).indexOf(word) == -1)
+        c = 0.0;
+      else {
+        c = dict[word];
+      }
+
+      return c/countV(dict);
+    }
+
+
+    function getIndex() {
+      let out =[];
+      for (var i=0; i < document.body.childNodes.length; i++ ) {
+        // console.log('loop',i);
+        // console.log(document.body.childNodes[i].nodeName);
+        if (document.body.childNodes[i].nodeName == "DIV" ) {
+          // console.log('push',i);
+          //out.push(document.body.childNodes[i].innerText);
+          if (document.body.childNodes[i].className == "data" ) {
+            out.push(genwordD(document.body.childNodes[i].innerText));
+          }
+          if (document.body.childNodes[i].className == "datah") {
+            out.push(genwordD(document.body.childNodes[i].innerHTML));
+          }
+        }
+      }
+      return out;
+
+    }
+
+     function getIndex2() {
+      let out =[];
+      for (var i=0; i < document.body.childNodes.length; i++ ) {
+        // console.log('loop',i);
+        // console.log(document.body.childNodes[i].nodeName);
+        if (document.body.childNodes[i].nodeName == "DIV" ) {
+          // console.log('push',i);
+          //out.push(document.body.childNodes[i].innerText);
+          if (document.body.childNodes[i].className == "data" ) {
+            out.push(document.body.childNodes[i].innerText.toUpperCase());
+          }
+          if (document.body.childNodes[i].className == "datah") {
+            out.push(document.body.childNodes[i].innerHTML.toUpperCase());
+          }
+        }
+      }
+      return out;
+
+    }
+
+    function scrollToPara(n) {
+      let p2p = []
+      for (var i=0; i < document.body.childNodes.length; i++ ) {
+        // console.log('loop',i);
+        // console.log(document.body.childNodes[i].nodeName);
+        if (document.body.childNodes[i].nodeName == "DIV" ) {
+          // console.log('push',i);
+          //out.push(document.body.childNodes[i].innerText);
+          if (document.body.childNodes[i].className == "data" || document.body.childNodes[i].className == "datah") {
+            p2p.push(i);
+          }
+        }
+      }
+      document.body.childNodes[p2p[n]].scrollIntoView();
+
+    }
+
+    function unhidePara(n) {
+      let p2p = []
+      for (var i=0; i < document.body.childNodes.length; i++ ) {
+        // console.log('loop',i);
+        // console.log(document.body.childNodes[i].nodeName);
+        if (document.body.childNodes[i].nodeName == "DIV" ) {
+          // console.log('push',i);
+          //out.push(document.body.childNodes[i].innerText);
+          if (document.body.childNodes[i].className == "data" || document.body.childNodes[i].className == "datah") {
+            p2p.push(i);
+          }
+        }
+      }
+      document.body.childNodes[p2p[n]].className = 'data';
+
+    }
+
+    function hideAllData() {
+      for (var i=0; i < document.body.childNodes.length; i++ ) {
+        // console.log('loop',i);
+        // console.log(document.body.childNodes[i].nodeName);
+        if (document.body.childNodes[i].nodeName == "DIV" ) {
+          // console.log('push',i);
+          //out.push(document.body.childNodes[i].innerText);
+          if (document.body.childNodes[i].className == "data") {
+            document.body.childNodes[i].className = "datah";
+          }
+        }
+      }
+
+    }
+
+    function showOnlyPara(n) {
+      hideAllData();
+      unhidePara(n);
+      scrollToPara(n);
+    }
+
+
+    function showOnlyParaH(n , word) {
+      hideAllData();
+      unhidePara(n);
+      scrollToPara(n);
+      removeHighlightAll();
+      // removeHighlight(n);
+      highlight(word, n);
+    }
+
+    function search() {
+      let w =  document.getElementById('in').value.toUpperCase();
+      if (w.trim() == "") {
+        console.log('e');
+
+      }
+      else {
+        search1();
+
+      }
+
+
+
+
+    }
+
+    function search1() {
+      let count = 0;
+      let w =  document.getElementById('in').value.toUpperCase();
+      let pdict = getIndex();
+      document.getElementById('out').innerHTML = '';
+      for (var i=0; i < pdict.length; i++) {
+       if (wordDensity(w,pdict[i]) > 0.0) {
+         document.getElementById('out').innerHTML += "found exact " + w  + " at paragraph <button onclick='showOnlyParaH(" + String(i)+","+ '"' + w + '"' + ")'>"+ String(i+1);
+         count++;
+
+       }
+      }
+      if (count == 0) {
+        document.getElementById('out').innerHTML += w+" not found in any paragraph";
+        search2();
+      }
+    }
+
+    function search2() {
+      let count = 0;
+      let w =  document.getElementById('in').value.toUpperCase();
+      let pdict = getIndex2();
+      // getIndex2()[0].split('A').length
+      document.getElementById('out').innerHTML = '';
+      for (var i=0; i < pdict.length; i++) {
+       if (pdict[i].split(w).length > 1) {
+         document.getElementById('out').innerHTML += "found subword " + w + " at paragraph <button onclick='showOnlyParaH(" + String(i)+","+ '"' + w + '"' +")'>"+ String(i+1);
+         count++;
+
+       }
+      }
+      if (count == 0) {
+        document.getElementById('out').innerHTML += "subword "+w+" not found in any paragraph";
+      }
+    }
+
+    function subnew(word, txt) {
+      // "abc".split('b').join("<a>b</a>")
+      return txt.split(word).join("<a>"+word+"</a>");
+
+    }
+    function highlight(word, para) {
+      let n = para;
+      let p2p = [];
+      for (var i=0; i < document.body.childNodes.length; i++ ) {
+        // console.log('loop',i);
+        // console.log(document.body.childNodes[i].nodeName);
+        if (document.body.childNodes[i].nodeName == "DIV" ) {
+          // console.log('push',i);
+          //out.push(document.body.childNodes[i].innerText);
+          if (document.body.childNodes[i].className == "data" || document.body.childNodes[i].className == "datah") {
+            p2p.push(i);
+          }
+        }
+      }
+      let oldtxt = document.body.childNodes[p2p[n]].innerHTML;
+      document.body.childNodes[p2p[n]].innerHTML = subnew(word, oldtxt);
+
+    }
+
+    function removeHighlight(para) {
+      //"abxac".replaceAll('a',"")
+      let n = para;
+      let p2p = [];
+      for (var i=0; i < document.body.childNodes.length; i++ ) {
+        // console.log('loop',i);
+        // console.log(document.body.childNodes[i].nodeName);
+        if (document.body.childNodes[i].nodeName == "DIV" ) {
+          // console.log('push',i);
+          //out.push(document.body.childNodes[i].innerText);
+          if (document.body.childNodes[i].className == "data" || document.body.childNodes[i].className == "datah") {
+            p2p.push(i);
+          }
+        }
+      }
+      let oldtxt = document.body.childNodes[p2p[n]].innerHTML;
+      document.body.childNodes[p2p[n]].innerHTML = oldtxt.replaceAll('<a>', "").replaceAll('</a>',"");
+
+    }
+
+    function removeHighlightAll() {
+      //"abxac".replaceAll('a',"")
+      // let n = para;
+      let outtxt = '';
+      let p2p = [];
+      for (var i=0; i < document.body.childNodes.length; i++ ) {
+        // console.log('loop',i);
+        // console.log(document.body.childNodes[i].nodeName);
+        if (document.body.childNodes[i].nodeName == "DIV" ) {
+          // console.log('push',i);
+          //out.push(document.body.childNodes[i].innerText);
+          if (document.body.childNodes[i].className == "data" || document.body.childNodes[i].className == "datah") {
+            p2p.push(i);
+          }
+        }
+      }
+      for (var i=0 ; i < p2p.length; i++) {
+        oldtxt = document.body.childNodes[p2p[i]].innerHTML;
+        document.body.childNodes[p2p[i]].innerHTML = oldtxt.replaceAll('<a>', "").replaceAll('</a>',"");
+      }
+
+
+    }
+
+
+
+
+
+
+
+    </script>
+  </head>
+  <body>
+
+
+<div class="left">
+
+<label for="paras">paragraph:</label>
+
+<select style="max-width: 28em;" name="paras" id="paras">
+  <option value="0" onclick='showOnlyPara(0)'>1  GASTRO-INTESTINAL SYSTEM</option>
+  <option value="1" onclick='showOnlyPara(1)'>2  CARDIOVASCULAR SYSTEM</option>
+  <option value="2" onclick='showOnlyPara(2)'>3  RESPIRATORY SYSTEM</option>
+  <option value="3" onclick='showOnlyPara(3)'>4  CENTRAL NERVOUS SYSTEM</option>
+  <option value="4" onclick='showOnlyPara(4)'>5  INFECTIONS</option>
+  <option value="5" onclick='showOnlyPara(5)'>6  ENDOCRINE SYSTEM</option>
+  <option value="6" onclick='showOnlyPara(6)'>7 OBSTETRICS, GYNAECOLOGY & URINARY-TRACT DISORDERS</option>
+  <option value="7" onclick='showOnlyPara(7)'>8  MALIGNANT DISEASE & IMMUNOSUPPRESSION</option>
+  <option value="8" onclick='showOnlyPara(8)'>9  NUTRITION & BLOOD</option>
+  <option value="9" onclick='showOnlyPara(9)'>10  MUSCULOSKELETAL & JOINT DISEASE</option>
+  <option value="10" onclick='showOnlyPara(10)'>11  EYE</option>
+  <option value="11" onclick='showOnlyPara(11)'>12  EAR, NOSE, OROPHARYNX & ORAL CAVITY</option>
+  <option value="12" onclick='showOnlyPara(12)'>13  SKIN</option>
+  <option value="13" onclick='showOnlyPara(13)'>14  IMMUNOLOGICAL PRODUCTS & VACCINES</option>
+  <option value="14" onclick='showOnlyPara(14)'>15  ANAESTHESIA</option>
+  <option value="15" onclick='showOnlyPara(15)'>16  DRUGS USED IN POISONING & TOXICOLOGY</option>
+  <option value="16" onclick='showOnlyPara(16)'>17  CONTRAST MEDIA & RADIOPHARMACEUTICALS</option>
+
+
+</select>
+
+
+
+<!-- <button class='leftmenu' onclick='window.scrollTo({ top: 0, behavior: "smooth" })'>up</button>
+<button class='leftmenu' onclick='showOnlyPara(0)'>1</button>
+<button class='leftmenu' onclick='showOnlyPara(1)'>2</button>
+<button class='leftmenu' onclick='showOnlyPara(2)'>3</button>
+<button class='leftmenu' onclick='showOnlyPara(3)'>4</button>
+<button class='leftmenu' onclick='showOnlyPara(4)'>5</button>
+<button class='leftmenu' onclick='showOnlyPara(5)'>6</button>
+<button class='leftmenu' onclick='showOnlyPara(6)'>7</button>
+<button class='leftmenu' onclick='showOnlyPara(7)'>8</button>
+<button class='leftmenu' onclick='showOnlyPara(8)'>9</button>
+<button class='leftmenu' onclick='showOnlyPara(9)'>10</button>
+<button class='leftmenu' onclick='showOnlyPara(10)'>11</button>
+<button class='leftmenu' onclick='showOnlyPara(11)'>12</button>
+<button class='leftmenu' onclick='showOnlyPara(12)'>13</button>
+<button class='leftmenu' onclick='showOnlyPara(13)'>14</button>
+<button class='leftmenu' onclick='showOnlyPara(14)'>15</button>
+<button class='leftmenu' onclick='showOnlyPara(15)'>16</button>
+<button class='leftmenu' onclick='showOnlyPara(16)'>17</button> -->
+</div>
+
+<br>
+<br>
+<br>
+<input id='in' onclick="this.select()">
+<button class="button" onclick='search()'>find</button>
+
+<p id='out'></p>
+
+
+
+<div class='data'>
+<p class='data'>
+<br>
+
+  1  GASTRO-INTESTINAL SYSTEM <br>
+   1.1  ANTACID AND OTHER DRUGS FOR DYSPEPSIA<br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CARMINATIVE MIXT   180 ML <br>
+	SIMETHICONE TAB     80 MG <br>
+	SIMETICONE DROP  40 MG/0.6 ML IN 15 ML <br>
+          บัญชี ข <br>	ALUMINIUM HYDROXIDE TAB   500 MG <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ALUMINIUM HYDROXIDE + MAGNESIUM HYDROXIDE + SIMETHICONE SUSP   240 ML (ANTACID®) <br>
+	SODIUM ALGINATE + SODIUM BICARBONATE + CALCIUM CARBONATE SUSP 10 ML/SACHET <br>
+                           (ONEGERD®) (STAFF สูติ-นรีแพทย์; NED-M) <br>
+   1.2  ANTISPASMODICS AND OTHER DRUGS ALTERING GUT MOTILITY <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DOMPERIDONE TAB   10 MG <br>
+	DOMPERIDONE SUSP 1 MG/ML IN 30 ML <br>
+	HYOSCINE-N-BUTYLBROMIDE TAB   10 MG <br>
+	HYOSCINE-N-BUTYLBROMIDE SYR    5 MG/5 ML IN 30 ML <br>
+	HYOSCINE-N-BUTYLBROMIDE INJ     20 MG/ML IN 1 ML <br>
+	METOCLOPRAMIDE TAB   10 MG <br>
+	METOCLOPRAMIDE INJ    5 MG/ML IN 2 ML <br>
+          บัญชี ข <br>	MEBEVERINE HCL TAB   135 MG <br>
+   1.3  ULCER-HEALING DRUGS AND DRUGS USED IN VARICEAL BLEEDING <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	OMEPRAZOLE CAP   20 MG <br>
+          บัญชี ข <br>	OMEPRAZOLE SODIUM INJ    40 MG/10 ML <br>
+          บัญชี ค <br>	PANTOPRAZOLE SODIUM INJ 40 MG/10 ML (STAFF) <br>
+	SUCRALFATE TAB    1 GM <br>
+          บัญชี ง <br>	OCTREOTIDE ACETATE INJ     0.1 MG/ML (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ESOMEPRAZOLE CAP   40 MG (NEXIUM®) (STAFF; NED-Z) <br>
+	RABEPRAZOLE TAB   20 MG (STAFF) <br>
+	REBAMIPIDE TAB   100 MG (MUCOSTA®) (STAFF) <br>
+   1.4  DRUG USED IN ACUTE DIARRHEA <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ORAL REHYDRATION SALT (ORS) POWDER   7.5 GM <br>
+          บัญชี ข <br>	LOPERAMIDE CAP   2 MG <br>
+
+
+
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	DIOCTAHEDRAL SMECTITE SUSP   3 GM/20 ML (DEHECTA®) (NED-F) <br>
+	SACCHAROMYCES BOULARDIL SOL   250 MG/SACHET (BIOFLOR®) (STAFF; NED-F) <br>
+   1.5  DRUGS USED IN CHRONIC BOWEL DISORDERS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	SULFASALAZINE TAB   500 MG <br>
+   1.6  LAXATIVES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	AROMATIC CASTOR OIL SOL   450 ML <br>
+	BISACODYL TAB   5 MG <br>
+	BISACODYL RECTAL SUPPO  10 MG <br>
+	GLYCERIN RECTAL SUPPO    1.5 GM (CHILD) <br>
+	ISPAGHULA HUSK POWDER   3.5 GM/5 GM (MUCILIN®) <br>
+	MAGNESIUM HYDROXIDE (MOM)    240 ML <br>
+	SENNA TAB   7.5 MG <br>
+          บัญชี ข <br>	LACTULOSE SYR   100 ML <br>
+          บัญชี ค <br>	SODIUM PHOSPHATES SOL   90 ML (SWIFF®) (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	SODIUM CHLORIDE ENEMA   15% IN 10 ML (CHILD) (UNISON®) (NED-M) <br>
+	SODIUM CHLORIDE ENEMA   15% IN 100 ML (ADULT) (NED-M) <br>
+   1.7  LOCAL PREPARATIONS FOR ANAL AND RECTAL DISORDERS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+           บัญชี ข <br>	LOCAL ANESTHETIC + ASTRINGENT + ANTI-INFLAM RECTAL SUPPO (PROCTOSEDYL) <br>
+           <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	DIOSMIN 450 MG + HERPERIDINE 50 MG TAB (DAFLON®) <br>
+   1.8  DRUGS AFFECTING INTESTINAL SECRETIONS <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+          	URSODEOXYCHOLIC ACID SYR (URSOLIN®) 30 MG/ML IN 50 ML (รพ.ผลิตเอง; NED-M)
+
+</p></div>
+<div class='data'>
+<p class='data'>
+2  CARDIOVASCULAR SYSTEM <br>
+   2.1  POSITIVE INOTROPIC DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DIGOXIN TAB   0.25 MG <br>
+	DIGOXIN SYR   0.05 MG/ML IN 60 ML <br>
+	DIGOXIN INJ   0.25 MG/ML IN 2 ML <br>
+          บัญชี ง <br>	MILRINONE INJ   1 MG/ML IN 10 ML (PRIMACOR®) <br>
+
+ <br>
+
+
+   2.2  DIURETICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	FUROSEMIDE TAB   40 MG <br>
+	FUROSEMIDE TAB   500 MG <br>
+	FUROSEMIDE INJ    10 MG/ML IN 2 ML <br>
+	FUROSEMIDE INJ    250 MG/25 ML <br>
+	HYDROCHLOROTHIAZIDE (HCTZ) TAB   25 MG <br>
+	MANNITOL INJ   20% IN 250 ML <br>
+	SPIRONOLACTONE TAB   25 MG <br>
+	SPIRONOLACTONE TAB   100 MG <br>
+          บัญชี ข <br>	AMILORIDE 5 MG + HCTZ 50 MG TAB <br>
+   2.3  ANTI-ARRHYTHMIC DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ADENOSINE INJ   6 MG/2 ML <br>
+	ATROPINE SULPHATE INJ   0.6 MG/ML <br>
+	LIDOCAINE INJ   1% W/V IN 50 ML <br>
+	LIDOCAINE INJ   2% W/V IN 50 ML <br>
+	MAGNESIUM SULFATE INJ   10% IN 10 ML <br>
+	MAGNESIUM SULFATE INJ   50% IN 2 ML <br>
+          บัญชี ค <br>	AMIODARONE TAB   200 MG <br>
+	AMIODARONE INJ    150 MG/3 ML <br>
+   2.4  BETA-ADRENOCEPTOR BLOCKING DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ATENOLOL TAB   50 MG <br>
+	METOPROLOL TARTRATE TAB   100 MG <br>
+	PROPRANOLOL TAB   10 MG <br>
+	PROPRANOLOL TAB   40 MG <br>
+          บัญชี ค <br>	CARVEDILOL TAB   12.5 MG <br>
+	LABETALOL HCL INJ   100 MG/20 ML <br>
+   2.5  DRUGS AFFECTING THE RENIN-ANGIOTENSIN SYSTEM AND SOME OTHER ANTIHYPERTENSIVE DRUGS <br>
+     2.5.1  VASODILATOR ANTIHYPERTENSIVE DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	HYDRALAZINE TAB   25 MG <br>
+	HYDRALAZINE INJ    20 MG (APRESSOLINE®) <br>
+	SODIUM NITROPRUSSIDE INJ   50 MG (ศูนย์หัวใจ, zero stock) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	MINOXIDIL TAB   5 MG <br>
+     2.5.2  CENTRALLY ACTING ANTIHYPERTENSIVE DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	METHYLDOPA TAB   250 MG <br>
+
+     2.5.3  ALPHA-ADRENOCEPTOR BLOCKING DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ข <br>	PRAZOSIN TAB   2 MG <br>
+          บัญชี ค <br>	DOXAZOSIN TAB 2 MG <br>
+     2.5.4  ANGIOTENSIN-CONVERTING ENZYME INHIBITORS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CAPTOPRIL TAB   25 MG (zero stock) <br>
+	ENALAPRIL TAB     5 MG <br>
+	ENALAPRIL TAB   20 MG <br>
+     2.5.5  ANGIOTENSIN-II RECEPTOR ANTAGONISTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ข <br>	LOSARTAN POTASSIUM TAB   50 MG <br>
+	LOSARTAN POTASSIUM TAB   100 MG <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	VALSARTAN TAB   160 MG (STAFF) <br>
+	VALSARTAN 160 MG + AMLODIPINE 5 MG TAB (EXFORGE®) (STAFF) <br>
+	VALSARTAN 51 MG + SACUBITRIL 49 MG TAB (ENTRESTO®) (STAFF; NED-Z) <br>
+   2.6  NITRATES, CALCIUM-CHANNEL BLOCKERS AND OTHER VASODILATORS <br>
+     2.6.1  NITRATES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	GLYCERYL TRINITRATE INJ   50 MG/10 ML <br>
+	ISOSORBIDE DINITRATE SL TAB 5 MG <br>
+	ISOSORBIDE DINITRATE TAB 10 MG <br>
+	ISOSORBIDE MONONITRATE TAB 60 MG <br>
+     2.6.2  CALCIUM-CHANNEL BLOCKERS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	AMLODIPINE TAB 10 MG <br>
+	VERAPAMIL TAB   40 MG (ISOPTIN®) <br>
+	VERAPAMIL SR TAB   240 MG (STAFF อายุรแพทย์โรคต่อมไร้ท่อและเมแทบอลิซึม) <br>
+          บัญชี ข <br>	LERCANIDIPINE HCL TAB   20 MG <br>
+	MANIDIPINE HCL TAB   20 MG <br>
+          บัญชี ค <br>	NICARDIPINE INJ   2 MG/2 ML <br>
+          บัญชี ง <br>	NIFEDIPINE SR TAB   20 MG <br>
+	NIMODIPINE TAB   30 MG (NIMOTOP®) (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	DILTIAZEM INJ   10 MG (HERBESSER®) (zero stock) <br>
+	NIFEDIPINE SL CAP   5 MG (ADALAT®) (NED-M) <br>
+     2.6.3  OTHER VASODILATORS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ง <br>	SILDENAFIL TAB   20 MG (VIAGRA®) (STAFF) <br>
+	SILDENAFIL TAB   100 MG (STAFF) <br>
+   2.7  SYMPATHOMIMETICS <br>
+     2.7.1  INOTROPIC SYMPATHOMIMETICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DOPAMINE HCL INJ     250 MG/10 ML <br>
+          บัญชี ข <br>	DOBUTAMINE HCL INJ 250 MG/20 ML <br>
+     2.7.2  VASOCONSTRICTOR SYMPATHOMIMETICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	NOREPINEPHRINE BITARTRATE (NORADRENALINE) INJ   4 MG/4 ML <br>
+          บัญชี ค <br>	EPHEDRINE HCL INJ   30 MG/1 ML <br>
+	MIDODRINE TAB 2.5 MG <br>
+     2.7.3  DRUGS USED IN CARDIOPULMONARY RESUSCITATION <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ADRENALINE (EPINEPHRINE HCL) INJ   1 MG/1 ML <br>
+	EPINEPHRINE PREFILLED SYRINGE INJ  300 MCG (รพ.ผลิตเอง) <br>
+   2.8  ANTICOAGULANTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	ENOXAPARIN INJ   40 MG/0.4 ML (CLEXANE®) (STAFF) <br>
+	ENOXAPARIN INJ   60 MG/0.6 ML (STAFF) <br>
+	ENOXAPARIN INJ   80 MG/0.8 ML (STAFF) <br>
+	HEPARIN INJ   5,000 IU/ML IN 5 ML <br>
+	WARFARIN TAB   3 MG <br>
+	WARFARIN TAB   5 MG <br>
+          บัญชี ง <br>	FONDAPARINUX INJ   2.5 MG/0.5 ML (ARIXTRA®) (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	APIXABAN TAB   5 MG (ELIQUIS®) (STAFF; NED-Z) <br>
+	DABIGATRAN CAP 150 mg (PRADAXA®) (STAFF อายุรแพทย์; NED-Z) <br>
+   2.9  ANTIPLATELET DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ASPIRIN TAB   81 MG <br>
+	ASPIRIN CHEWABLE TAB   81 MG <br>
+	ASPIRIN CHEWABLE TAB   300 MG <br>
+          บัญชี ค <br>	CLOPIDOGREL TAB   75 MG <br>
+          บัญชี ง <br>	EPTIFIBATIDE INJ   0.75 MG/ML IN 100 ML (INTEGRILIN®) (ศูนย์หัวใจ; zero stock) <br>
+	TICAGRELOR TAB  90 MG (BRILINTA®) (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	CILOSTAZOL TAB   50 MG (STAFF) <br>
+	CILOSTAZOL TAB   100 MG (STAFF) <br>
+	PRASUGREL TAB    10 MG (STAFF) (ศูนย์หัวใจ; NED-Z) <br>
+
+
+ <br>
+   2.10  FIBRINOLYTIC DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	STREPTOKINASE (SK) INJ   1.5 MU <br>
+          บัญชี ง <br>	ALTEPLASE (RT-PA) INJ   50 MG/50 ML (ACTILYSE®) (STAFF) <br>
+   2.11  HEMOSTATICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	TRANEXAMIC ACID INJ   50 MG/ML IN 5 ML (TRANSAMIN®) <br>
+          บัญชี ค <br>	TRANEXAMIC ACID CAP   500 MG <br>
+   2.12  LIPID-REGULATING DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	GEMFIBROZIL CAP   600 MG <br>
+	SIMVASTATIN TAB     10 MG <br>
+	SIMVASTATIN TAB     20 MG <br>
+          บัญชี ข <br>	ATORVASTATIN TAB   40 MG (STAFF) <br>
+          บัญชี ค <br>	FENOFIBRATE CAP   200 MG <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ATORVASTATIN TAB   10 MG (XALATOR®) (STAFF) <br>
+	EZETIMIBE TAB   10 MG (EZETROL®) (STAFF) <br>
+	EZETIMIBE 10 MG + SIMVASTATIN 20 MG TAB (VYTORIN®) (STAFF; NED-Z) <br>
+	ROSUVASTATIN TAB   10 MG (CRESTOR®) (STAFF) <br>
+
+
+
+</p></div>
+<div class='data'>
+<p class='data'>
+3  RESPIRATORY SYSTEM <br>
+   3.1  BRONCHODILATORS <br>
+     3.1.1  ADRENOCEPTOR AGONISTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	SALBUTAMOL TAB   2 MG <br>
+	SALBUTAMOL SYR   2 MG/5 ML	IN 60 ML <br>
+	SALBUTAMOL MDI   100 MCG/DOSE (200 DOSE) <br>
+	SALBUTAMOL SOL FOR NEBULIZER   0.5% IN 2.5 ML <br>
+	TERBUTALINE SULFATE INJ   0.5 MG/ML <br>
+          บัญชี ข <br>	PROCATEROL HCL TAB   50 MCG (MEPTIN®)  <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	(SALBUTAMOL 1 MG + GLYCERYL GUAIACOLATE 50 MG)/5 ML IN 100 ML  (VENTOLIN EXP®) <br>
+     3.1.2  COMPOUND ANTIMUSCARINIC BRONCHODILATORS <br>
+         <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+           บัญชี ก <br>	IPRATROPIUM 0.02 MG + FENOTEROL 0.05 MG MDI (200 DOSE) (BERODUAL®)	 <br>
+	IPRATROPIUM 0.05 MG + FENOTEROL 1.25 MG SOL FOR NEBULIZER IN 4 ML <br>
+          บัญชี ค <br>	TIOTROPIUM CAP   18 MCG (SPIRIVA®) (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	TIOTROPIUM 2.5 MCG + OLODATEROL 2.5 MCG SOL FOR INHALATION (SPIOLTO®RESPIMAT®) <br>
+	(STAFF; NED-Z) <br>
+     3.1.3  THEOPHYLLINE <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	AMINOPHYLLINE TAB   100 MG <br>
+	AMINOPHYLLINE INJ     250 MG/10 ML <br>
+	THEOPHYLLINE SR TAB 200 MG <br>
+   3.2  CORTICOSTEROIDS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	BUDESONIDE MDI   200 MCG/DOSE (200 DOSE) <br>
+	BUDESONIDE SUSP FOR NEBULIZER   1 MG/2 ML (PULMICORT®) (STAFF กุมารแพทย์, อายุรแพทย์, ER) <br>
+          บัญชี ค <br>	BUDESONIDE 160 MCG + FORMOTEROL 4.5 MCG TURB (SYMBICORT®)  <br>
+	BUDESONIDE 320 MCG + FORMOTEROL 9 MCG TURB (60 DOSE) (SYMBICORT-F®)  <br>
+	FLUTICASONE MDI   125 MCG/DOSE (120 DOSE) (FLIXOTIDE®)  <br>
+	FLUTICASONE 250 MCG + SALMETEROL 25 MCG ACCUHALER (SERETIDE® ACCU) <br>
+	FLUTICASONE 250 MCG + SALMETEROL 25 MCG MDI (SERETIDE® MDI)  <br>
+   3.3  LEUKOTRIENE RECEPTOR ANTAGONISTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	MONTELUKAST SODIUM TAB   10 MG  <br>
+	MONTELUKAST ORAL GRANULE 4 MG (SINGULAIR® ) (STAFF กุมารแพทย์) <br>
+   3.4  ANTIHISTAMINES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CETIRIZINE TAB   10 MG <br>
+	CETIRIZINE SYR     1 MG/ML IN 60 ML <br>
+	CHLORPHENIRAMINE TAB   4 MG <br>
+	CHLORPHENIRAMINE SYR   2 MG/5 ML IN 60 ML  <br>
+	CHLORPHENIRAMINE INJ    10 MG/ML <br>
+	HYDROXYZINE TAB   10 MG  <br>
+	HYDROXYZINE SYR   10 MG/5 ML IN 60 ML <br>
+	LORATADINE TAB     10 MG <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	FEXOFENADINE HCL TAB   180 MG (TELFAST®) (STAFF) <br>
+   3.5  PULMONARY SURFACTANTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ง <br>	BERACTANT INJ   100 MG/4 ML (SURVANTA®) (STAFF) <br>
+   3.6  COUGH PREPARATIONS <br>
+     3.6.1  COUGH SUPPRESSANTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DEXTROMETHORPHAN TAB   15 MG <br>
+          บัญชี ค <br>	CODEINE 10 MG + GLYCERYL GUAIACOLATE 100 MG CAP   <br>
+
+
+
+     3.6.2  EXPECTORANT AND DEMULCENT COUGH PREPARATIONS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	GLYCERYL GUAIACOLATE SYR   100 MG/5 ML IN 60 ML <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ACETYLCYSTEINE POWDER   200 MG/3 GM (NED-F) <br>
+	BROMHEXINE TAB   8 MG <br>
+	CARBOCYSTEINE SYR   100 MG/5 ML IN 60 ML (NED-F) <br>
+   3.7  SYSTEMIC NASAL DECONGESTANTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	PSEUDOEPHEDRINE TAB   60 MG  <br>
+	PSEUDOEPHEDRINE SYR   30 MG/5 ML IN 60 ML <br>
+   3.8  OTHER RESPIRATORY PREPARATIONS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	AROMATIC AMMONIA SPIRIT   450 ML
+
+</p></div>
+<div class='data'>
+<p class='data'>
+4  CENTRAL NERVOUS SYSTEM <br>
+   4.1  HYPNOTICS AND ANXIOLYTICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CHLORAL HYDRATE SYR   50 MG/ML IN 10 ML (รพ.ผลิตเอง) <br>
+	DIAZEPAM TAB   2 MG <br>
+	DIAZEPAM TAB   5 MG <br>
+	DIAZEPAM INJ    10 MG/2 ML <br>
+	LORAZEPAM TAB 0.5 MG <br>
+	LORAZEPAM TAB   2 MG <br>
+          บัญชี ข <br>	CLONAZEPAM TAB 0.5 MG <br>
+	CLONAZEPAM TAB   2 MG <br>
+	DIPOTASSIUM CLORAZEPATE CAP   5 MG <br>
+	HYDROXYZINE TAB   10 MG <br>
+	HYDROXYZINE SYR   10 MG/5 ML IN 60 ML <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ALPRAZOLAM TAB   0.25 MG (STAFF) <br>
+	ETIFOXINE CAP   50 MG (STAFF จิตแพทย์; NED-Z) <br>
+   4.2  DRUGS USED IN PSYCHOSES AND RELATED DISORDERS <br>
+     4.2.1  ANTIPSYCHOTIC DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CHLORPROMAZINE HCL TAB   25 MG <br>
+	CHLORPROMAZINE HCL TAB   100 MG <br>
+	CHLORPROMAZINE HCL TAB   200 MG <br>
+	CHLORPROMAZINE HCL INJ     25 MG/ML IN 2 ML <br>
+	FLUPHENAZINE DECANOATE INJ 50 MG/2 ML <br>
+	HALOPERIDOL TAB   0.5 MG <br>
+
+          บัญชี ก <br>	HALOPERIDOL TAB      5 MG <br>
+	HALOPERIDOL TAB    10 MG <br>
+	HALOPERIDOL SYR      2 MG/ML IN 15 ML <br>
+	HALOPERIDOL DECANOATE INJ   50 MG/ML <br>
+	HALOPERIDOL INJ   5 MG/ML <br>
+	PERPHENAZINE TAB 4 MG <br>
+	PERPHENAZINE TAB 8 MG <br>
+	PERPHENAZINE TAB 16 MG <br>
+	TRIFLUOPERAZINE HCL TAB 5 MG <br>
+          บัญชี ข <br>	RISPERIDONE TAB   1 MG <br>
+	RISPERIDONE TAB   2 MG <br>
+	RISPERIDONE SYR   1 MG/ML IN 30 ML <br>
+	THIORIDAZINE HCL TAB   100 MG <br>
+          บัญชี ค <br>	CLOZAPINE TAB    25 MG (STAFF) <br>
+	CLOZAPINE TAB  100 MG (STAFF) <br>
+	FLUPENTIXOL TAB  3 MG <br>
+          บัญชี ง <br>	QUETIAPINE TAB   200 MG (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ARIPIPRAZOLE TAB   10 MG (ABILIFY®) (STAFF) <br>
+	QUETIAPINE TAB     25 MG (STAFF) <br>
+     4.2.2  ANTIMANIC DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CARBAMAZEPINE TAB   200 MG <br>
+	LITHIUM CARBONATE CAP   300 MG <br>
+	SODIUM VALPROATE TAB    200 MG (DEPAKINE CHRONO®) <br>
+	SODIUM VALPROATE SYR   200 MG/ML IN 60 ML <br>
+ 	SODIUM VALPROATE INJ.   400 MG/4 ML <br>
+          บัญชี ข <br>	SODIUM VALPROATE SR TAB   500 MG (DEPAKINE CHRONO®) <br>
+          บัญชี ค <br>	LAMOTRIGINE TAB   50 MG (LAMICTAL®) (STAFF) <br>
+   4.3  ANTIDEPRESSANT DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	AMITRIPTYLINE TAB   10 MG <br>
+	AMITRIPTYLINE TAB   25 MG <br>
+	FLUOXETINE CAP      20 MG <br>
+	IMIPRAMINE TAB       10 MG <br>
+	IMIPRAMINE TAB       25 MG <br>
+	NORTRIPTYLINE TAB   10 MG <br>
+	NORTRIPTYLINE TAB   25 MG <br>
+	SERTRALINE TAB   50 MG <br>
+          บัญชี ข <br>	 MIANSERIN TAB    30 MG (STAFF จิตแพทย์) <br>
+
+          บัญชี ค <br>	TRAZODONE HCL TAB 50 MG <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ESCITALOPRAM TAB   20 MG (STAFF; NED-F) <br>
+	MIRTAZAPINE TAB   15 MG (REMERON®) (STAFF) <br>
+	VENLAFAXINE HCL ER CAP   75 MG (STAFF) <br>
+   4.4  CENTRAL NERVOUS SYSTEM STIMULANTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	METHYLPHENIDATE TAB   10 MG (RUBIFEN®) <br>
+                                          (STAFF กุมารแพทย์สาขาพัฒนาการเด็กและ STAFF จิตแพทย์สาขาจิตเวชและวัยรุ่น) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	CLONIDINE TAB   0.15 MG <br>
+	(STAFF กุมารแพทย์สาขาพัฒนาการเด็กและ STAFF จิตแพทย์สาขาจิตเวชเด็กและวัยรุ่น; NED-Z) <br>
+	METHYLPHENIDATE XR TAB   18 MG (CONCERTA® XL) <br>
+	(STAFF กุมารแพทย์สาขาพัฒนาการเด็กและ STAFF จิตแพทย์สาขาจิตเวชเด็กและวัยรุ่น; NED-Z; zero stock) <br>
+	METHYLPHENIDATE CAP   20 MG (RITALIN LA®) <br>
+	(STAFF กุมารแพทย์สาขาพัฒนาการเด็กและ STAFF จิตแพทย์สาขาจิตเวชเด็กและวัยรุ่น; NED-Z; zero stock) <br>
+ 4.5  DRUGS USED IN NAUSEA AND VERTIGO <br>
+     4.5.1  DRUGS USED IN NAUSEA AND VOMITTING <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DOMPERIDONE TAB    10 MG <br>
+	DOMPERIDONE SUSP    1 MG/ML IN 30 ML <br>
+	METOCLOPRAMIDE TAB 10 MG <br>
+	METOCLOPRAMIDE INJ  5 MG/ML IN 2 ML <br>
+          บัญชี ข <br>	ONDANSETRON TAB     8 MG <br>
+	ONDANSETRON INJ      2 MG/ML IN 4 ML <br>
+          บัญชี ง <br>	OLANZAPINE TAB   10 MG (STAFF) <br>
+     4.5.2  DRUGS USED IN VESTIBULAR DISORDERS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DIMENHYDRINATE TAB   50 MG <br>
+	DIMENHYDRINATE INJ    50 MG/ML IN 1 ML <br>
+          บัญชี ข <br>	BETAHISTINE MESILATE TAB   12 MG <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	BETAHISTINE DIHYDRORIDE TAB   24 MG (STAFF; NED-Z) <br>
+   4.6  ANALGESICS AND ANTIPYRETICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ASPIRIN CHEWABLE TAB   300 MG <br>
+	IBUPROFEN TAB   400 MG <br>
+	IBUPROFEN SUSP 100 MG/5 ML IN 60 ML <br>
+	PARACETAMOL TAB   325 MG <br>
+	PARACETAMOL TAB   500 MG <br>
+
+          บัญชี ก <br>	PARACETAMOL DROP  60 MG/0.6 ML IN 15 ML <br>
+	PARACETAMOL SYR   120 MG/5 ML IN 60 ML <br>
+	PARACETAMOL SYR   250 MG/5 ML IN 60 ML <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	PARACETAMOL INJ   300 MG/2 ML <br>
+   4.7  ANALGESICS <br>
+     4.7.1  OPIOID ANALGESICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	FENTANYL INJ   0.1 MG/2 ML <br>
+	FENTANYL TRANSDERMAL PATCH   25 MCG/HR (STAFF) <br>
+	METHADONE SYR   10 MG/ML IN 450 ML (รพ.ผลิตเอง) <br>
+	MORPHINE IMMEDIATE RELEASE TAB   10 MG (STAFF) <br>
+	MORPHINE SULFATE SR CAP    20 MG (STAFF) <br>
+	MORPHINE SULFATE (MST) TAB   30 MG (STAFF) <br>
+	MORPHINE ORAL SOL   10 MG/5 ML IN 60 ML (STAFF) <br>
+	MORPHINE SULFATE INJ   10 MG/ML <br>
+	PETHIDINE INJ   50 MG/ML <br>
+	TRAMADOL CAP 50 MG <br>
+	TRAMADOL INJ  50 MG/ML <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	TRAMADOL 37.5 MG + PARACETAMOL 325 MG TAB (DUOCETZ®) (NED-F) <br>
+     4.7.2  DRUGS FOR NEUROPATHIC PAIN <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	AMITRIPTYLINE TAB   10 MG <br>
+	AMITRIPTYLINE TAB   25 MG <br>
+	CARBAMAZEPINE TAB 200 MG <br>
+	NORTRIPTYLINE TAB  10 MG <br>
+	NORTRIPTYLINE TAB  25 MG <br>
+          บัญชี ง <br>	GABAPENTIN CAP   100 MG <br>
+	GABAPENTIN CAP   400 MG <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	PREGABALIN CAP   25 MG (LYRICA®) (STAFF; NED-Z) <br>
+	PREGABALIN CAP   75 MG (STAFF) <br>
+     4.7.3  ANTIMIGRAINE DRUGS <br>
+          4.7.3.1  DRUGS FOR ACUTE MIGRAINE ATTACK <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ASPIRIN CHEWABLE TAB   300 MG <br>
+	IBUPROFEN TAB   400 MG <br>
+	PARACETAMOL TAB   325 MG <br>
+	PARACETAMOL TAB   500 MG <br>
+
+          บัญชี ค <br>	ERGOTAMINE TARTRATE 1 MG + CAFFEINE 100 MG TAB (CAFERGOT®) <br>
+          4.7.3.2  DRUGS USED IN THE PROPHYLAXIS OF MIGRAINE <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	AMITRIPTYLINE TAB   10 MG <br>
+	AMITRIPTYLINE TAB   25 MG <br>
+	PROPRANOLOL TAB  10 MG <br>
+	PROPRANOLOL TAB  40 MG <br>
+          บัญชี ข <br>	CYPROHEPTADINE TAB 4 MG <br>
+          บัญชี ง <br>	SODIUM VALPROATE SR TAB   500 MG (DEPAKINE CHRONO®) <br>
+	TOPIRAMATE TAB 50 MG (TOPAMAX®) (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	FLUNARIZINE CAP   5 MG <br>
+   4.8  ANTIEPILEPTICS <br>
+     4.8.1  DRUGS USED IN THE CONTROL OF EPILEPSY <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CARBAMAZEPINE TAB  200 MG <br>
+	MAGNESIUM SULFATE INJ   10% IN 10 ML <br>
+	MAGNESIUM SULFATE INJ   50% IN 2 ML <br>
+	PHENOBARBITAL TAB   30 MG <br>
+	PHENYTOIN CHEWABLE TAB   50 MG (DILANTIN®) <br>
+	PHENYTOIN SR CAP   100 MG <br>
+	SODIUM VALPROATE SYR   200 MG/ML IN 60 ML <br>
+ 	SODIUM VALPROATE INJ.   400 MG/4 ML <br>
+          บัญชี ข <br>	CLONAZEPAM TAB   0.5 MG <br>
+	CLONAZEPAM TAB     2 MG <br>
+	SODIUM VALPROATE SR TAB   500 MG (DEPAKINE CHRONO®) <br>
+          บัญชี ค <br>	LAMOTRIGINE TAB   50 MG (LAMICTAL®) (STAFF) <br>
+	LEVETIRACETAM TAB   500 MG <br>
+          บัญชี ง <br>	TOPIRAMATE TAB   50 MG (TOPAMAX®) (STAFF) <br>
+   4.8.2  DRUGS USED IN STATUS EPILEPTICUS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DIAZEPAM INJ   10 MG/2 ML <br>
+	PHENOBARBITAL SODIUM INJ   200 MG/4 ML <br>
+	PHENYTOIN INJ   250 MG/5 ML <br>
+          บัญชี ค <br>	SODIUM VALPROATE INJ   400 MG/4 ML <br>
+          บัญชี ง <br>	LEVETIRACETAM INJ   500 MG/5 ML (KEPPRA®) (STAFF) <br>
+	MIDAZOLAM HCL INJ   5 MG/ML (STAFF) <br>
+	MIDAZOLAM HCL INJ   15 MG/3 ML (STAFF) <br>
+
+
+   4.9  DRUGS USED IN MOVEMENT DISORDERS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DIAZEPAM TAB   2 MG <br>
+	DIAZEPAM TAB   5 MG <br>
+	LEVODOPA 100 MG + BENSERAZIDE 25 MG SR TAB (MADOPAR HBS®) <br>
+	LEVODOPA 200 MG + BENSERAZIDE 50 MG TAB (MADOPAR®) <br>
+	PROPRANOLOL TAB   10 MG <br>
+	PROPRANOLOL TAB   40 MG <br>
+	TRIHEXYPHENIDYL TAB   2 MG <br>
+	TRIHEXYPHENIDYL TAB   5 MG <br>
+          บัญชี ข <br>	BACLOFEN TAB   10 MG <br>
+	CLONAZEPAM TAB   0.5 MG <br>
+	CLONAZEPAM TAB     2 MG <br>
+          บัญชี ง <br>	ENTACAPONE TAB   200 mg (STAFF อายุรแพทย์สาขาโรคสมองและระบบประสาท) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	BROMOCRIPTINE MESILATE TAB   2.5 MG <br>
+	PRAMIPEXOLE TAB   0.375 MG (STAFF; NED-Z) <br>
+   4.10  DRUGS USED IN SUBSTANCE DEPENDENCE <br>
+     4.10.1 Drugs used in alcohol dependence <br>
+     4.10.2 Drug used in smoking cessation <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	NORTRIPTYLINE TAB   10 MG <br>
+	NORTRIPTYLINE TAB   25 MG <br>
+     4.10.3 Drug used in opioid dependence <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ง <br>	METHADONE SYR   10 MG/ML IN 450 ML (รพ.ผลิตเอง) <br>
+  4.11  DRUG USED IN DEMENTIA <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี จ <br>(2)	DONEPEZIL HCL TAB   10 MG (ARICEPT®) (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	CITICOLINE INJ   1000 MG/4 ML (SOMAZINA®) (STAFF; NED-Z) <br>
+	GALANTAMINE PR CAP  8 MG (REMINYL®) (STAFF) <br>
+	MEMANTINE ORAL SOL   5 MG/0.5 ML/DROP IN 100 ML (EBIXA®) <br>
+	(STAFF อายุรแพทย์สาขาโรคสมองและระบบประสาท; NED-Z) <br>
+	NICERGOLINE TAB   30 MG (SERMION®) (STAFF) <br>
+	PROTEIN HYDROLYSATES INJ   10 ML (CEREBROLYSIN®) (STAFF; NED-Z) <br>
+	VINPOCETIN TAB   10 MG (CAVINTON®) <br>
+
+</p></div>
+<div class='data'>
+<p class='data'>
+5  INFECTIONS <br>
+   5.1  ANTIBACTERIAL DRUGS <br>
+     5.1.1  PENICILLINS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	AMOXICILLIN CAP   500 MG <br>
+	AMOXICILLIN SYR    125 MG/5 ML IN 60 ML <br>
+	AMOXICILLIN SYR    250 MG/5 ML IN 60 ML <br>
+	AMPICILLIN INJ   1 GM <br>
+	BENZATHINE BENZYLPENICILLIN (PENICILLIN G BENZATHINE) INJ   1.2 MU/VIAL <br>
+	BENZYLPENICILLIN (PENICILLIN G) INJ   5 MU <br>
+	CLOXACILLIN INJ   1 GM <br>
+	DICLOXACILLIN CAP   250 MG <br>
+	DICLOXACILLIN SYR   125 MG/5 ML IN 60 ML <br>
+	PHENOXYMETHYLPENICILLIN (PENICILLIN V) TAB   250 MG <br>
+          บัญชี ค <br>	AMOXICILLIN 875 MG + CLAVULANATE 125 MG TAB <br>
+	(AMOXICILLIN 400 MG + CLAVULANATE 57 MG)/5 ML IN 70 ML SYR (STAFF) <br>
+	AMOXICILLIN 1000 MG + CLAVULANATE 200 MG INJ <br>
+	AMPICILLIN 2 GM + SULBACTAM 1 GM INJ (UNASYN®) (STAFF) <br>
+          บัญชี ง <br>	PIPERACILLIN 4 GM + TAZOBACTAM 0.5 GM INJ (TAZOCIN®) (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	SULTAMICILLIN TAB   750 MG <br>
+     5.1.2  CEPHALOSPORINS, CEPHAMYCINS, AND OTHER BETA-LACTAMS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CEFAZOLIN INJ   1 GM <br>
+	CEPHALEXIN CAP   250 MG <br>
+	CEPHALEXIN SUSP  250 MG/5 ML IN 60 ML <br>
+          บัญชี ค <br>	CEFOTAXIME INJ   1 GM <br>
+	CEFTAZIDIME INJ  1 GM <br>
+	CEFTRIAXONE INJ 1 GM <br>
+
+           บัญชี ง <br>	CEFIXIME CAP   100 MG (STAFF) <br>
+	CEFIXIME SYR   100 MG/5 ML (CEFSPAN®) (STAFF) <br>
+	CEFOPERAZOLE 1 GM + SULBACTAM 1 GM INJ (SULPERAZON®) (STAFF) <br>
+	CEFOXITIN INJ   1 GM (STAFF) <br>
+	ERTAPENEM INJ 1 GM (INVANZ®) (STAFF) <br>
+	IMIPINEM 500 MG + CILASTATIN 500 MG INJ (TIENAM®) (STAFF) <br>
+	MEROPENEM INJ   1 GM (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	CEFUROXIME INJ   750 MG <br>
+	SULBACTAM INJ    2 G (STAFF; NED-M) <br>
+
+     5.1.3  TETRACYCLINES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DOXYCYCLINE CAP   100 MG <br>
+     5.1.4  AMINOGLYCOSIDES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	GENTAMICIN INJ   80 MG/2 ML <br>
+          บัญชี ข <br>	AMIKACIN INJ     500 MG/2 ML <br>
+     5.1.5  MACROLIDES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ERYTHROMYCIN SYR   125 MG/5 ML IN 60 ML <br>
+	ROXITHROMYCIN TAB  150 MG <br>
+          บัญชี ง <br>	AZITHROMYCIN CAP   250 MG <br>
+	AZITHROMYCIN SYR   200 MG/5 ML IN 60 ML <br>
+	AZITHROMYCIN INJ    500 MG (STAFF) <br>
+	CLARITHROMYCIN TAB 500 MG (STAFF) <br>
+     5.1.6  QUINOLONES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	NORFLOXACIN TAB   400 MG <br>
+          บัญชี ข <br>	OFLOXACIN TAB      200 MG <br>
+          บัญชี ง <br>	CIPROFLOXACIN TAB  500 MG (STAFF) <br>
+	CIPROFLOXACIN INJ   200 MG/100 ML (STAFF) <br>
+	LEVOFLOXACIN TAB  500 MG <br>
+	LEVOFLOXACIN INJ   500 MG/100 ML (STAFF) <br>
+     5.1.7  SOME OTHER ANTIBACTERIALS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	METRONIDAZOLE TAB   200 MG <br>
+	METRONIDAZOLE INJ    500 MG/100 ML <br>
+          บัญชี ข <br>	CLINDAMYCIN CAP   300 MG <br>
+	CLINDAMYCIN INJ    600 MG/4 ML <br>
+          บัญชี ง <br>	COLISTIMETHATE SODIUM INJ   150 MG (COLISTIN®) (STAFF) <br>
+	FOSFOMYCIN INJ   4 G (STAFF) <br>
+	SODIUM FUSIDATE TAB   250 MG (FUCIDIN®) (STAFF) <br>
+	VANCOMYCIN INJ   500 MG (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	TIGECYCLINE INJ   50 MG (TYGACIL®) (STAFF; NED-M) <br>
+     5.1.8  SULPHONAMIDES AND TRIMETHOPRIM <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	SULFAMETHOXAZOLE 400 MG + TRIMETHOPRIM 80 MG (CO-TRIMOXAZOLE) TAB <br>
+		(SULFAMETHOXAZOLE 200 MG + TRIMETHOPRIM 40 MG)/5 ML IN 60 ML SUSP <br>
+	SULFAMETHOXAZOLE 400 MG + TRIMETHOPRIM 80 MG INJ <br>
+
+     5.1.9  ANTITUBERCULOUS DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ETHAMBUTOL TAB   400 MG <br>
+	ETHAMBUTOL TAB   500 MG <br>
+	ISONIAZID TAB   100 MG <br>
+	PYRAZINAMIDE TAB  500 MG <br>
+	RIFAMPICIN CAP   300 MG <br>
+	RIFAMPICIN CAP   450 MG <br>
+	RIFAMPICIN SYR   20 MG/ML IN 60 ML (รพ.ผลิตเอง) <br>
+          บัญชี ข <br>	ISONIAZID 150 MG + RIFAMPICIN 300 MG TAB (RIFINAH/RIMACTAZID®) <br>
+	ISONIAZID 75 MG + RIFAMPICIN 150 MG + PYRAZINAMIDE 400 MG + ETHAMBUTOL 275 MG TAB <br>
+	(RIMSTAR®) <br>
+          บัญชี ค <br>	AMIKACIN INJ   500 MG/2 ML (MDR-TB) <br>
+	CYCLOSERINE CAP   250 MG <br>
+	ETHIONAMIDE TAB   250 MG <br>
+	PARA-AMINOSALICYLIC (PAS) TAB   1 GM <br>
+	STREPTOMYCIN INJ   1 GM <br>
+          บัญชี ง <br>	LEVOFLOXACIN TAB   500 MG (MDR-TB) <br>
+	LEVOFLOXACIN INJ   500 MG/100 ML (MDR-TB) (STAFF) <br>
+     5.1.10  ANTILEPROTIC DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DAPSONE TAB   100 MG <br>
+   5.2  ANTIFUNGAL DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	FLUCONAZOLE CAP   200 MG <br>
+	GRISEOFULVIN TAB    500 MG <br>
+	NYSTATIN SUSP   100,000 U/ML IN 12 ML <br>
+          บัญชี ค <br>	AMPHOTERICIN B INJ   50 MG <br>
+	ITRACONAZOLE CAP   100 MG (STAFF) <br>
+   5.3  ANTIVIRAL DRUGS <br>
+     5.3.1  NON-ANTIRETROVIRALS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ACYCLOVIR TAB   200 MG <br>
+	ACYCLOVIR TAB   800 MG <br>
+          บัญชี ค <br>	ACYCLOVIR  SODIUM INJ   250 MG (STAFF) <br>
+          	OSELTAMIVIR CAP   75 MG <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ACYCLOVIR CREAM   5% IN 1 GM <br>
+	VALACYCLOVIR TAB   500 MG (STAFF SKIN) <br>
+
+
+     5.3.2  ANTIRETROVIRALS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	EFAVIRENZ (EFV) CAP   200 MG <br>
+	EFAVIRENZ (EFV) CAP   600 MG <br>
+	LAMIVUDINE (3TC) TAB  150 MG <br>
+	LAMIVUDINE (3TC) TAB  300 MG <br>
+	LAMIVUDINE (3TC) SYR   10 MG/ML IN 60 ML <br>
+	NEVIRAPINE (NVP) TAB   200 MG <br>
+ 	NEVIRAPINE (NVP) SYR   10 MG/ML IN 60 ML <br>
+	TENOFOVIR (TDF) TAB   300 MG <br>
+	TENOFOVIR 300 MG + EMTRICITABINE (FTC) 200 MG TAB (TENO-EM®) <br>
+	TENOFOVIR 300 MG + EMTRICITABINE 200 MG + EFAVIRENZ 600 MG TAB (GPO-VIR T®) <br>
+	TENOFOVIR 300 MG + LAMIVUDINE 300 MG + DOLUTEGRAVIR 50 MG TAB (TLD) (ACRIPTEGA®) <br>
+	ZIDOVUDINE (AZT) CAP   100 MG <br>
+	ZIDOVUDINE (AZT) CAP   300 MG <br>
+	ZIDOVUDINE (AZT) SYR   10 MG/ML IN 60 ML <br>
+	ZIDOVUDINE 300 MG + LAMIVUDINE 150 MG TAB (ZILAVIR®) <br>
+          บัญชี ข <br>	RILPIVIRINE (RPV) TAB  25 MG (EDURANT®) <br>
+          บัญชี ค <br>	ABACAVIR (ABC) TAB   300 MG <br>
+	ABACAVIR 600 MG + LAMIVUDINE 300 MG TAB (ALACOVIR®) <br>
+	ATAZANAVIR (ATV) CAP 200 MG <br>
+	ATAZANAVIR (ATV) CAP 300 MG <br>
+	DARUNAVIR (DRV) TAB   600 MG (DARUTAB®) <br>
+	DOLUTEGRAVIR (DTG) TAB  50 MG <br>
+	LOPINAVIR (LPV) 200 MG + RITONAVIR 50 MG CAP (KALETRA®) <br>
+	LOPINAVIR (LPV) 80 MG + RITONAVIR 20 MG SYR <br>
+	RITONAVIR (RTV) CAP   100 MG (RINAVIR®) <br>
+   5.4  ANTIPROTOZOAL DRUGS <br>
+     5.4.1  ANTIMALARIALS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CHLOROQUIN PHOSPHATE TAB   250 MG <br>
+	PRIMAQUINE TAB   15 MG <br>
+	QUININE SULFATE TAB   300 MG <br>
+	QUININE DIHYDROCHLORIDE INJ   600 MG/ML <br>
+          บัญชี ค <br>	ARTESUNATE INJ   60 MG <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	PIPERAQUINE 320 MG + DIHYDROARTMISININ 40 MG TAB (สคร. สนับสนุน) <br>
+     5.4.2  OTHER ANTIPROTOZOAL DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	METRONIDAZOLE TAB   200 MG <br>
+	METRONIDAZOLE INJ    500 MG/100 ML <br>
+   5.5  ANTHELMINTICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ALBENDAZOLE TAB   200 MG <br>
+	DIETHYLCARBAMAZINE CITRATE TAB   300 MG <br>
+	MEBENDAZOLE TAB   100 MG <br>
+	MEBENDAZOLE SUSP  100 MG/5 ML IN 30 ML <br>
+   5.6  ANTISEPTICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CHLORHEXIDINE SCRUB 4% IN 4.5 LIT <br>
+	CHLORHEXIDINE SOL     5% IN 4.5 LIT <br>
+	ETHYL ALCOHOL SOL    70% IN 60 ML <br>
+	ETHYL ALCOHOL SOL    70% IN 450 ML <br>
+	GENTIAL VIOLET SOL     1% IN 10 ML <br>
+	HYDROGEN PEROXIDE SOL   450 ML <br>
+	POVIDONE IODINE SOL 10% IN 30 ML <br>
+	POVIDONE IODINE SOL 10% IN 450 ML <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	BRILLIAN GREEN 0.2% + GENTIAL VIOLET 0.2% + PROFLAVINE 0.1% SOL IN 60 ML <br>
+	(TRIPLE DYES) (รพ.ผลิตเอง) <br>
+	FORMALDEHYDE SOL   450 ML <br>
+	POVIDONE IODINE SCRUB 7.5% IN 5 LIT <br>
+</p></div>
+<div class='data'>
+<p class='data'>
+6  ENDOCRINE SYSTEM <br>
+   6.1  DRUGS USED IN DIABETES <br>
+     6.1.1  INSULINS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ISOPHANE PROTAMINE INSULIN (NPH)  INJ   100 U/ML IN 10 ML (INSULATARD®) <br>
+	SOLUBLE INSULIN (RI) INJ   100 U/ML IN 10 ML (ACTRAPID HM®) <br>
+	SOLUBLE INSULIN 30 % + ISOPHANE INSULIN 70% INJ   100 U/ML IN 10 ML (MIXTARD 30 HM®) <br>
+	SOLUBLE INSULIN 30 % + ISOPHANE INSULIN 70% INJ 300 U/ML IN 3 ML PENFILL (MIXTARD 30 HM®) <br>
+          บัญชี ง <br>	INSULIN ASPART INJ   300 U/3 ML PENFILL (NOVORAPID®) <br>
+	INSULIN ASPART 30% + INSULIN ASPAST PROTAMINE 70% INJ 100 U/ML IN 3 ML PENFILL <br>
+	(NOVOMIX 30®) <br>
+	INSULIN GLARGINE INJ   300 UNIT/ML IN 1.5 ML PENFILL (LANTUS®) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	(INSULIN GLARGINE 100 UNIT/LIXISENATIDE 33 MCG) IN 3 ML INJ (SOLIQUA®) <br>
+	(STAFF อายุรแพทย์โรคต่อมไร้ท่อและเมแทบอลิซึม; zero stock) <br>
+	SEMAGLUTIDE INJ 2 MG/15 ML (STAFF อายุรแพทย์โรคต่อมไร้ท่อและเมแทบอลิซึม; zero stock) <br>
+	LIRAGLUTIDE INJ   6 MG/ML IN 3 ML (VICTOZA®) (zero stock) <br>
+
+
+     6.1.2  ORAL ANTIDIABETIC DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	GLIPIZIDE TAB   5 MG <br>
+	METFORMIN TAB   500 MG <br>
+	METFORMIN TAB   850 MG <br>
+          บัญชี ข <br>	PIOGLITAZONE TAB   30  MG <br>
+          บัญชี ง <br>	REPAGLINIDE TAB   1 MG (NOVONORM®) (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	DAPAGLIFLOZIN TAB   10 MG (FORXIGA®) (STAFF) <br>
+	EMPAGLIFLOZIN 12.5 MG + METFORMIN HCL 1,000 MG TAB (JARDIANCE DUO®) (NED-Z) <br>
+	METFORMIN 1,000 MG/SITAGLIPTIN 100 MG TAB (JANUMET XR®) <br>
+	(STAFF อายุรแพทย์โรคต่อมไร้ท่อและเมแทบอลิซึม; NED-Z) <br>
+	SEMAGLUTIDE TAB  14 MG (STAFF อายุรแพทย์โรคต่อมไร้ท่อและเมแทบอลิซึม; zero stock; NED-Z) <br>
+	SITAGLIPTIN TAB   50 MG (JANUVIR®) <br>
+   6.2  THYROID AND ANTITHYROID DRUGS <br>
+     6.2.1  THYROID HORMONES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	LEVOTHYROXINE SODIUM TAB   0.1 MG (ELTROXINE®) <br>
+     6.2.2  ANTITHYROID DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	METHIMAZOLE TAB   5 MG <br>
+	PROPYLTHIOURACIL TAB   50 MG <br>
+           <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	CINACALCET TAB   25 mg (STAFF อายุรแพทย์สาขาโรคไต; NED-Z) <br>
+   6.3  CORTICOSTEROIDS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DEXAMETHASONE TAB   0.5 MG (STAFF อายุรแพทย์โรคต่อมไร้ท่อและเมแทบอลิซึม; zero stock) DEXAMETHASONE TAB   4 MG <br>
+	DEXAMETHASONE INJ    4 MG/ML <br>
+	HYDROCORTISONE INJ   100 MG <br>
+	PREDNISOLONE TAB   5 MG <br>
+          บัญชี ค <br>	METHYLPREDNISOLONE INJ   1 GM <br>
+	TRIAMCINOLONE ACETONIDE (IA/ID) INJ   40 MG/ML (STAFF) <br>
+	TRIAMCINOLONE ACETONIDE (IA/ID) INJ   50 MG/5 ML <br>
+6.4  SEX HORMONES <br>
+     6.4.1  FEMALE SEX HORMONES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CONJUGATED ESTROGENS TAB   0.625 MG <br>
+	MEDROXYPROGESTERONE TAB   10 MG (PROVERA®) <br>
+	NORESTHISTERONE TAB   5 MG (PRIMALUT-N®) <br>
+
+          บัญชี ข <br>	ESTRADIOL GEL 60 MG/100 GM <br>
+	HYDROXYPROGESTERONE INJ   250 MG/ML (PROLUTON DEPOT®) <br>
+          บัญชี ง <br> 	MICRONIZED PROGESTERONE TAB 200 MG (UTROGESTAN®) (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	DIENOGEST TAB   2 MG (NED-F) <br>
+	ESTRADIOL 2 MG + NORGESTREL 0.5 MG TAB (CYCLOPROGYNOVA®) <br>
+	MEDROXYPROGESTERONE TAB   500 MG (FARLUTAL®) (zero stock) <br>
+     6.4.2  MALE SEX HORMONES AND ANTAGONISTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	TESTOSTERONE ENANTATE INJ 250 MCG (STAFF อายุรแพทย์โรคต่อมไร้ท่อและเมแทบอลิซึม; zero stock) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	TESTOSTERONE GEL 50 MG/5 GM (STAFF; zero stock; NED-Z) <br>
+   6.5  HYPOTHALAMIC AND PITUITARY HORMONES <br>
+     6.5.1  HYPOTHALAMIC AND ANTERIOR PITUITARY HORMONES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+           บัญชี ง <br>	TETRACOSACTIDE (COSYNTROPIN) INJ   250 MCG <br>
+	(STAFF อายุรแพทย์โรคต่อมไร้ท่อและเมแทบอลิซึม; zero stock) <br>
+           บัญชี จ <br>(2)		OCTEOTIDE INJ   20 MG (SANDOSTATIN LAR®) (STAFF อายุรแพทย์โรคต่อมไร้ท่อและเมแทบอลิซึม; zero stock) <br>
+     6.5.2  POSTERIOR PITUITARY HORMONES AND ANTAGONISTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ง <br>	DESMOPRESSIN (DDAVP) TAB   0.2 MG (STAFF อายุรแพทย์โรคต่อมไร้ท่อและเมแทบอลิซึม; zero stock) <br>
+	DESMOPRESSIN INJ 4 MCG/ML (STAFF อายุรแพทย์โรคต่อมไร้ท่อและเมแทบอลิซึม; zero stock) <br>
+	DESMOPRESSIN NASAL SPRAY   10 MCG/PUFF IN 2.5 ML (MINIRIN®) (STAFF) <br>
+   6.6  DRUGS AFFECTING BONE METABOLISM <br>
+           <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+           บัญชี ง <br>	ALENDRONATE SODIUM TAB   70 MG <br>
+	CALCITONIN-SALMON INJ   100 U/ML <br>
+	ZOLEDRONIC ACID INJ   4 MG/5 ML (ZOMETA®) (STAFF; zero stock) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ALENDRONIC SODIUM 70 MG + CHOLECALCIFEROL 5600 IU TAB (FOSAMAX PLUS®) (STAFF; NED-Z) <br>
+	DENOSUMAB INJ   60 MG/ML (PROLIA®) (STAFF; NED-Z) <br>
+	SYNTHETIC SALMON CALCITONIN NASAL SPRAY   200 U/DOSE (STAFF; NED-Z) <br>
+	TERIPARATIDE INJ   750 MCG/3 ML (STAFF อายุรแพทย์โรคต่อมไร้ท่อและเมแทบอลิซึม; zero stock; NED-Z) <br>
+	ZOLEDRONIC ACID INJ   5 MG/100 ML (STAFF อายุรแพทย์โรคต่อมไร้ท่อและเมแทบอลิซึม; zero stock) <br>
+   6.7  OTHER ENDOCRINE DRUGS <br>
+     6.7.1  BROMOCRIPTINE AND OTHER DOPAMINERGIC DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	BROMOCRIPTINE MESILATE TAB   2.5 MG <br>
+
+
+     6.7.2  DRUGS AFFECTING GONADOTROPHINS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี จ <br>(2)	TRIPTORELIN PAMOATE INJ   11.25 MG (DIPHERELINE®) <br>
+     6.7.3  DRUGS USED IN ENDOGENOUS GLUCOCORTICOID AND ANDROGEN OVERPRODUCTION <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ง <br>	KETOCONAZOLE TAB   200 MG <br>
+
+</p></div>
+<div class='data'>
+<p class='data'>
+7  OBSTETRICS, GYNAECOLOGY AND URINARY-TRACT DISORDERS <br>
+   7.1  DRUGS USED IN OBSTETRICS <br>
+     7.1.1  PROSTAGLANDINS, PROSTAGLANDINS ANTAGONISTS AND OXYTOCICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	METHYLERGOMETRIME MALEAT  INJ   0.2 MG/ML <br>
+	OXYTOCIN INJ   10 U/ML <br>
+          บัญชี ง <br>	INDOMETHACIN SODIUM INJ   1 MG (STAFF กุมารแพทย์; ยากำพร้า) <br>
+	SULPROSTONE INJ   500 MCG (NALADOR®) (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	CARBETOCIN INJ   0.1 MG/ML (STAFF; NED-F) <br>
+	DINOPROSTONE VAGINAL TAB   3 MG (PROSTIN E – 2®) (STAFF) <br>
+	ILOPROST TROMETAMOL INJ    20 MCG/ML (ILOMEDIN®) (STAFF กุมารแพทย์) <br>
+	MISOPROSTOL TAB   200 MCG (CYTOTEC®) (STAFF) <br>
+     7.1.2  MYOMETRIAL RELAXANTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	TERBUTALINE SULFATE INJ	0.5 MG/ML <br>
+   7.2  TREATMENT OF VAGINAL AND VULVAL CONDITIONS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CLOTRIMAZOLE VAGINAL TAB   100 MG <br>
+   7.3  CONTRACEPTIVES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ETHINYLESTRADIOL 0.03 MG + LEVONOGESTREL 0.15MG TAB (R-DEN®) <br>
+	ETONOGESTREL IMPLANT   68 MG/ROD <br>
+	LEVONORGESTREL IMPLANT   2x75 MG/ROD (JADELLE®) <br>
+	MEDROXYPROGESTERONE ACETATE INJ   150 MG <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ETHINYLESTRADIOL 0.05 MG + LEVONOGESTREL 0.15 MG TAB (JINNY FMP®) <br>
+   7.4  DRUGS FOR GENITO-URINARY DISORDERS <br>
+     7.4.1  DRUGS FOR BENIGN PROSTATIC HYPERPLASIA <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	DOXAZOSIN TAB   2 MG <br>
+          บัญชี ง <br>	ALFUZOSIN HCL ER TAB   10 MG (XATRAL XL®) (STAFF) <br>
+	FINASTERIDE TAB  5 MG (STAFF) <br>
+
+
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	DOXAZOSIN MESYLATE TAB   4 MG (CARDURA XL®) (STAFF; NED-Z) <br>
+	DUTASTERIDE 0.5 MG + TAMSULOSIN 0.4 MG CAP (DUODART®) (STAFF; NED-Z) <br>
+	LIPIDOSTEROLIC EXTRACT CAP   160 MG (STAFF; NED-Z) <br>
+	SILODOSIN TAB       4 MG (URIEF®) (STAFF; NED-Z) <br>
+	TAMSULOSIN TAB 0.4 MG (STAFF; NED-Z) <br>
+     7.4.2  DRUGS FOR URINARY FREQUENCY, ENURESIS, AND INCONTINENCE <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	OXYBUTYNIN HCL TAB   5 MG (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	BETHANECHOL TAB   10 MG (UCHOLINE®) (STAFF ศัลยแพทย์โรคทางเดินปัสสาวะ) <br>
+	FLAVOXATE HCL TAB   200 MG (STAFF; NED-Z) <br>
+	TROSPIUM CHLORIDE TAB   30 MG <br>
+     7.4.3  DRUGS USED IN ALKALINISATION OF URINE <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+  	POTASSIUM CITRATE 231.5 MG + SODIUM CITRATE 195 MG TAB (POCITRIN®) (STAFF; NED-Z) <br>
+
+
+
+
+</p></div>
+<div class='data'>
+<p class='data'>
+8  MALIGNANT DISEASE AND IMMUNOSUPPRESSION <br>
+   8.1  CYTOTOXIC DRUGS <br>
+     8.1.1  ALKYLATING DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	CYCLOPHOSPHAMIDE INJ   1,000 MG (STAFF) <br>
+     8.1.2  CYTOTOXIC ANTIBIOTICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	DOXORUBICIN HCL INJ   50 MG/25 ML (ADRIM®) <br>
+          บัญชี ง <br>	MITOMYCIN-C INJ   2 MG (STAFF) <br>
+           <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	EPIRUBICIN INJ   10 MG/5 ML (STAFF; zero stock) <br>
+	EPIRUBICIN INJ   200 MG/100 ML (STAFF; zero stock) <br>
+     8.1.3  ANTIMETABOLITES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	FLUOROURACIL (5-FU) INJ   500 MG (STAFF) <br>
+	METHOTREXATE INJ   50 MG/2 ML (STAFF) <br>
+          บัญชี ง <br>	CAPECITABINE TAB   500 MG (XELODA®) (STAFF) <br>
+	OXALIPLATIN INJ       50 MG/25 ML (STAFF; zero stock) <br>
+	OXALIPLATIN INJ     100 MG/50 ML (STAFF; zero stock) <br>
+     8.1.4  VINCA ALKOLOIDS AND ETOPOSIDE <br>
+
+
+
+     8.1.5  OTHER NEOPLASTIC DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	CARBOPLATIN INJ   150 MG/5 ML <br>
+	CARBOPLATIN INJ   450 MG/45 ML (zero stock) <br>
+          บัญชี ง <br>	PACLITAXEL INJ   260 MG/43.4 ML (STAFF; zero stock) <br>
+	PACLITAXEL INJ   300 MG/50 ML (STAFF; zero stock) <br>
+          บัญชี จ <br>(2)	DOCETAXEL INJ   20 MG/ML <br>
+	DOCETAXEL INJ   80 MG/ML <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	NILOTINIB TAB   200 MG (TASIGNA®) (STAFF; zero stock) <br>
+   8.2  DRUGS AFFECTING THE IMMUNE RESPONSE <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DEXAMETHASONE TAB   0.5 MG (STAFF อายุรแพทย์โรคต่อมไร้ท่อและเมแทบอลิซึม; zero stock) <br>
+	DEXAMETHASONE TAB   4 MG <br>
+	DEXAMETHASONE INJ    4 MG/ML <br>
+	PREDNISOLONE TAB   5 MG <br>
+          บัญชี ค <br>	AZATHIOPRINE TAB   50 MG (STAFF) <br>
+	METHYLPREDNISOLONE INJ   2 GM <br>
+          บัญชี ง <br>	MYCOPHENOLATE MOFETIL CAP   250 MG (STAFF SKIN) <br>
+	MYCOPHENOLATE MOFETIL CAP   500 MG (STAFF อายุรแพทย์) <br>
+          บัญชี จ <br>(2)	HUMAN NORMAL IMMUNOGLOBULIN (IVIG) INJ   2.5 GM/50 ML (STAFF) <br>
+	HUMAN NORMAL IMMUNOGLOBULIN (IVIG) INJ     5 GM/100 ML (STAFF) <br>
+   8.3  SEX HORMONES AND HORMONE ANTAGONISTS IN MALIGNANT DISEASE <br>
+      8.3.1  PROGESTOGENS, ANTI-ESTROGENS AND ENZYME INHIBITORS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	TAMOXIFEN TAB   20 MG <br>
+          บัญชี ง <br>	LETROZOLE TAB   2.5 MG (STAFF) <br>
+      8.3.2  PROSTATE CANCER <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ง <br>	BICALUTAMIDE TAB   50 MG <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	DEGARELIX INJ     80 MG (FIRMAGON®) (STAFF; zero stock; NED-Z) <br>
+	DEGARELIX INJ   120 MG (STAFF; zero stock; NED-Z) <br>
+
+</p></div>
+<div class='data'>
+<p class='data'>
+9  NUTRITION AND BLOOD <br>
+   9.1  WHOLE BLOOD, BLOOD PRODUCTS AND DRUGS USED IN SOME BLOOD DISORDERS <br>
+     9.1.1  WHOLE BLOOD AND BLOOD PRODUCTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	FRESH FROZEN PLASMA <br>
+	FROZEN CRYOPRECIPITATE <br>
+	PACKED RED CELL <br>
+	PACKED RED CELL, LEUKOCYTE DEPLETED <br>
+	PLATELETS CONCENTRATE, SINGLE DONOR <br>
+	WHOLE BLOOD <br>
+     9.1.2  DRUGS USED IN HYPOPLASTIC, HEMOLYTIC AND RENAL ANAEMIAS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	FOLIC ACID TAB   5 MG <br>
+          บัญชี ค <br>	DEFERIPRONE TAB   500 MG (GPO-L-ONE®) <br>
+	DESFERRIOXAMINE MESILATE INJ   500 MG (DESFERAL®) (STAFF) <br>
+	IRON SUCROSE COMPLEX INJ       100 MG/5 ML (ENCIFER®) <br>
+          บัญชี จ <br>(2)	ERYTHROPOIETIN ALFA INJ   2,000 U (STAFF) <br>
+	ERYTHROPOIETIN ALFA INJ   4,000 U (HEMAX®) (STAFF) <br>
+     9.1.3  DRUGS USED IN BONE MARROW TRANSPLANTATION <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ง <br>	FILGRASTIM INJ   300 MCG/ML (STAFF) <br>
+   9.2  FLUIDS AND ELECTROLYTES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DEXTROSE INJ   5% IN 100 ML (D-5-W) <br>
+	DEXTROSE INJ   5% IN 500 ML <br>
+	DEXTROSE INJ   5% IN 1,000 ML <br>
+	DEXTROSE INJ  10% IN 500 ML (D-10-W) <br>
+	DEXTROSE 5% + 0.18% SODIUM CHLORIDE INJ IN 500 ML (D-5-S/5) <br>
+	DEXTROSE 5% + 0.225% SODIUM CHLORIDE INJ IN 500 ML (D-5-S/4) <br>
+	DEXTROSE 5% + 0.3% SODIUM CHLORIDE INJ IN 500 ML (D-5-S/3) <br>
+	DEXTROSE 5% + 0.45% SODIUM CHLORIDE INJ IN 500 ML (D-5-S/2) <br>
+	DEXTROSE 5% + 0.45% SODIUM CHLORIDE INJ IN 1,000 ML <br>
+	DEXTROSE 5% + 0.9% SODIUM CHLORIDE INJ IN 1,000 ML (D-5-S) <br>
+	DEXTROSE 10% + 0.18% SODIUM CHLORIDE INJ IN 500 ML (D-10-S/5) <br>
+	GLUCOSE INJ 50% IN 50 ML <br>
+	POTASSIUM CHLORIDE EC TAB   500 MG <br>
+	POTASSIUM CHLORIDE ELIXIR   20 MEQ/15 ML IN 60 ML <br>
+	POTASSIUM CHLORIDE INJ   20 MEQ/10 ML <br>
+	SODIUM BICARBONATE TAB   300 MG <br>
+	SODIUM BICARBONATE INJ   7.5% IN 10 ML <br>
+	SODIUM BICARBONATE INJ   7.5 % IN 50 ML <br>
+
+          บัญชี ก <br>	SODIUM CHLORIDE TAB   300 MG <br>
+	SODIUM CHLORIDE INJ   0.45% IN 1,000 ML (0.45%NSS) <br>
+	SODIUM CHLORIDE INJ   0.9% IN 100 ML (0.9%NSS) <br>
+	SODIUM CHLORIDE INJ   0.9% IN 1,000 ML <br>
+	SODIUM CHLORIDE INJ   0.9% IN 2,000 ML <br>
+	SODIUM CHLORIDE INJ   3% IN 500 ML (3%NaCl) <br>
+	SODIUM CHLORIDE FOR IRRIGATION   0.9% IN 1,000 ML <br>
+	WATER FOR INJECTION   10 ML <br>
+	WATER FOR INJECTION   500 ML <br>
+	น้ำยาล้างไตชนิด A   (PHENO-A)   5.5 LIT <br>
+	น้ำยาล้างไตชนิด A   (POTASSIUM 2.0 + CALCIUM 2.5) + GLUCOSE   5.5 LIT <br>
+	น้ำยาล้างไตชนิด A   (POTASSIUM 2.0 + CALCIUM 3.0) + GLUCOSE   5.5 LIT <br>
+	น้ำยาล้างไตชนิด A   (POTASSIUM 2.0 + CALCIUM 3.5) + GLUCOSE   5.5 LIT <br>
+	น้ำยาล้างไตชนิด A   (POTASSIUM 3.0 + CALCIUM 2.5) + GLUCOSE   5.5 LIT <br>
+	น้ำยาล้างไตชนิด A   (POTASSIUM 3.0 + CALCIUM 3.5) + GLUCOSE   5.5 LIT <br>
+	น้ำยาล้างไตชนิด B   (PHENO-B)   5.5 LIT <br>
+          บัญชี ข <br>	CALCIUM POLYSTYRENE SULFONATE ORAL POWDER   5 GM (KALIMATE®) <br>
+          บัญชี ค <br>	น้ำยาล้างไต CAPD 10   1.5% DEXTROSE LOW CALCIUM     2 LIT <br>
+	น้ำยาล้างไต CAPD 11   4.25% DEXTROSE LOW CALCIUM   2 LIT <br>
+	น้ำยาล้างไต CAPD 12   2.3% DEXTROSE LOW CALCIUM     2 LIT <br>
+	น้ำยาล้างไต CAPD 2    1.5% DEXTROSE NORMAL CALCIUM 2 LIT <br>
+	น้ำยาล้างไต CAPD 4    2.3% DEXTROSE NORMAL CALCIUM 2 LIT <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ACETATE RINGER SOL   1000 ML (ACETAR®) <br>
+	DEXTRAN 40 INJ   10% IN NORMAL SALINE 500 ML <br>
+	HUMAN ALBUMIN INJ   20% IN 50 ML (STAFF) <br>
+	HYDROXYETHYL STARCH   6% IN 500 ML (VOLUVEN®) (STAFF; zero stock) <br>
+	SUCCINYLATED GELATIN   500 ML (GELOFUSINE®) <br>
+   9.3  VITAMINS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	FOLIC ACID TAB   5 MG <br>
+	MULTIVITAMINS TAB <br>
+	MULTIVITAMINS DROP   15 ML <br>
+	MULTIVITAMINS SYRUP  60 ML <br>
+	VITAMIN B1 (THIAMINE) TAB   100 MG <br>
+	VITAMIN B1 (THIAMINE) INJ   100 MG/ML <br>
+	VITAMIN B6 (PYRIDOXINE) TAB   50 MG <br>
+	VITAMIN B COMPLEX TAB <br>
+	VITAMIN C TAB   100 MG <br>
+	VITAMIN D2 (ERGOCALCIFEROL) CAP   20,000 IU <br>
+
+          บัญชี ก <br>	VITAMIN K1 (PHYTOMENADIONE) INJ   1 MG/0.5 ML <br>
+	VITAMIN K1 (PHYTOMENADIONE) INJ   10 MG/ML <br>
+          บัญชี ข <br>	VITAMIN B COMPLEX INJ   1 ML <br>
+	VITAMIN C INJ   500 MG/2 ML <br>
+          บัญชี ค <br>	VITAMIN D (CALCITRIOL) CAP   0.25 MCG <br>
+         <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+  	VITAMIN B7 (BIOTIN) TAB   30 MCG (STAFF SKIN; NED-F) <br>
+	VITAMIN B1 250 MG + B6 250 MG + B12 1,000 MCG TAB (RE-B FORTE®) (NED-F) <br>
+	VITAMIN D3 (ALFACALCIDIOL) CAP   0.25 MCG <br>
+	VITAMIN D3 (ALFACALCIDIOL) CAP   1 MCG <br>
+   9.4  INTRAVENOUS NUTRITION <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	AMINO ACID SOL   7% IN 250 ML (NEPHROSTERIL®) <br>
+	AMINO ACID SOL   7.2% IN 500 ML (KIDMIN®) (STAFF) <br>
+	AMINO ACID SOL FOR INFANTS   10% IN 100 ML (STAFF) <br>
+	COMPLETE WATER-SOLUBLE AND FAT-SOLUBLE VITAMINS INJ   10 ML (OTSUKA MV®) <br>
+	FAT EMULSION   20% IN 100 ML <br>
+	MULTIPLE TRACE ELEMENT INJ   10 ML (ADDAMEL-N®) (STAFF) <br>
+          บัญชี ง <br>	AMINO ACID + GLUCOSE+ FAT EMULSION SOL 950 KCAL/ 1 LIT (OLIMEL N12E®) <br>
+	(Central line) (STAFF) <br>
+	AMINO ACID + GLUCOSE+ FAT EMULSION SOL 1,100 KCAL/986 ML (SMOFKABIVEN®) <br>
+	(Central line) (STAFF; fix stock) <br>
+	AMINO ACID + GLUCOSE+ FAT EMULSION SOL 1,300 KCAL/1,904 ML (SMOFKABIVEN®) <br>
+	(Peripheral line) (STAFF) <br>
+	AMINO ACID + GLUCOSE+ FAT EMULSION SOL 2 LIT (OLICLINOMEL N4-550E®) <br>
+	(Peripheral line) (STAFF) <br>
+    9.5  MINERALS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CALCIUM CARBONATE TAB  1.5 GM <br>
+	CALCIUM GLUCONATE INJ   10% IN 10 ML <br>
+	MAGNESIUM SULFATE INJ   10% IN 10 ML <br>
+MAGNESIUM SULFATE INJ   50% IN 2 ML <br>
+	MAGNESIUM HYDROXIDE (MOM)   240 ML <br>
+	ZINC SULFATE TAB   25 MG <br>
+	ZINC SULFATE SOL   5 MG/ML (รพ.ผลิตเอง) <br>
+          บัญชี ข <br>	ALUMINIUM HYDROXIDE TAB   500 MG <br>
+	FERROUS FUMARATE TAB   200 MG <br>
+	FERROUS FUMARATE DROP 45 MG/0.6 ML IN 15 ML <br>
+          บัญชี ค <br>	DIPOTASSIUM 20 MEQ + HYDROGEN PHOSPHATE 20 MEQ (K2HPO4) INJ <br>
+	ORAL ACIDIC PHOSPHATE SOL   1.45 MMOL IN 60 ML (JOULIE’S SOLUTION) (รพ.ผลิตเอง) <br>
+
+
+
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	CALCIUM ACETATE TAB   1,000 MG <br>
+	LANTHANUM CARBONATE CHEWABLE TAB   500 MG (FOSRENOL®) (STAFF; NED-Z) <br>
+	POTASSIUM SODIUM HYDROGEN CITRATE GRANULES   280 GM (URALYT-U®) (STAFF; NED-Z) <br>
+   9.6  VITAMIN AND MINERALS FOR PREGNANCY AND LACTATION MOTHER <br>
+         <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+         บัญชี ก <br>	FERROUS FUMARATE TAB   200 MG <br>
+	FOLIC ACID TAB   5 MG <br>
+	FOLIC ACID 0.4 MG + FERROUS 60.81 MG + POTASSIUM IODINE 0.15 MG TAB (TRIFERDINE®) <br>
+</p></div>
+<div class='data'>
+<p class='data'>
+10  MUSCULOSKELETAL AND JOINT DISEASE <br>
+   10.1  DRUGS USED IN RHEUMATIC DISEASE AND GOUT <br>
+     10.1.1  NON-STEROIDAL ANTI-INFLAMMATORY DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ASPIRIN CHEWABLE TAB   300 MG <br>
+	DICLOFENAC TAB   25 MG <br>
+	DICLOFENAC INJ    75 MG/3 ML (zero stock) <br>
+	IBUPROFEN TAB   400 MG <br>
+	IBUPROFEN SUSP   100 MG/5 ML IN 60 ML <br>
+	INDOMETHACIN CAP   25 MG <br>
+	NAPROXEN TAB   250 MG <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	CELECOXIB CAP   200 MG (CELEBREX®) (STAFF) <br>
+	DIACEREIN CAP   50 MG (ARTRODAR®) <br>
+	(STAFF สาขาอายุรแพทย์โรคข้อ สาขาเวชศาสตร์ฟื้นฟู หรือสาขาออร์โธปิดิกส์; NED-Z) <br>
+	DICLOFENAC GEL   1% IN 30 GM <br>
+	ETORICOXIB CAP  90 MG (ARCOXIA®) (STAFF) <br>
+	GLUCOSAMINE SULFATE POWDER   1,500 MG <br>
+	(STAFF สาขาอายุรแพทย์โรคข้อ สาขาเวชศาสตร์ฟื้นฟู หรือสาขาออร์โธปิดิกส์) <br>
+	KETOROLAC INJ   30 MG/ML (NED-F) <br>
+	MEFENAMIC ACID CAP   250 MG <br>
+	MELOXICAM TAB   7.5 MG <br>
+	PARECOXIB INJ   40 MG (DYNASTAT®) (STAFF; NED-F) <br>
+     10.1.2  DISEASE-MODIFYING ANTIRHEUMATIC DRUGS (DMARDS) <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ข <br>	CHLOROQUIN PHOSPHATE TAB   250 MG <br>
+	HYDROXYCHLOROQUIN PHOSPHATE TAB   200 MG <br>
+          บัญชี ค <br>	METHOTREXATE TAB  2.5 MG (STAFF) <br>
+	METHOTREXATE INJ 50 MG/2 ML (STAFF) <br>
+	SULFASALAZINE TAB   500 MG <br>
+
+          บัญชี ง <br>	LEFLUNOMIDE TAB   20 MG (STAFF REUMATOLOGIA) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	SODIUM HYALURONATE INJ   20 MG/2 ML (STAFF; NED-Z) <br>
+     10.1.3  DRUGS FOR TREATMENT OF GOUT AND HYPERURICAEMIA <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ALLOPURINOL TAB   100 MG <br>
+	COLCHICINE TAB   0.6 MG <br>
+          บัญชี ค <br>	BENZBROMARONE TAB   100 MG <br>
+          บัญชี ง <br>	FEBUXOSTAT TAB   80 MG (ZERO STOCK; STAFF REUMATOLOGIA) <br>
+   10.2  DRUGS USED IN NEUROMUSCULAR DISORDERS <br>
+     10.2.1  DRUGS WHICH ENHANCE NEUROMUSCULAR TRANSMISSION <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	PYRIDOSTIGMINE TAB   60 MG (MESTINON®) <br>
+          บัญชี ข <br>	NEOSTIGMINE INJ   2.5 MG/ML (PROSTIGMINE®) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	RIVASTIGMINE PATCH   5 CM (4.6 MG/24 HOUR) (EXELON®) (STAFF) <br>
+	RIVASTIGMINE PATCH  10 CM (9. 5 MG/24 HOUR) (EXELON®) (STAFF) <br>
+     10.2.2  SKELETAL MUSCLE RELAXANTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DIAZEPAM TAB   2 MG <br>
+	DIAZEPAM TAB   5 MG <br>
+	DIAZEPAM INJ   10 MG/2 ML <br>
+          บัญชี ข <br>	BACLOFEN TAB   10 MG <br>
+	TIZANIDINE HCL TAB   2 MG <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	TOLPERISONE TAB   50 MG <br>
+   10.3  DRUGS FOR RELIEF OF SOFT-TISSUE INFLAMMATION <br>
+     10.3.1  RUBIFACIENTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	METHYL SALICYLATE CREAM   25 GM <br>
+</p></div>
+<div class='data'>
+<p class='data'>
+
+11  EYE <br>
+   11.1  ANTI-INFECTIVE EYE PREPARATION <br>
+     11.1.1  ANTIBACTERIALS AND EYE WASH SOLUTION <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CHLORAMPHENICOL EYE DROP   0.5 % IN 5 ML <br>
+ 	CHLORAMPHENICOL EYE OINTMENT   1% IN 5 GM <br>
+          บัญชี ข <br>	GENTAMICIN EYE DROP   0.3% <br>
+	GENTAMYCIN FORTE EYE DROP   14 MG/ML (รพ.ผลิตเอง) <br>
+          บัญชี ค <br>	POLYMYXIN B SULFATE + NEOMYCIN SULFATE + GRAMICIDIN EYE DROP (POLY-OPH®) <br>
+
+   <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	CEFAZOLIN EYE DROP   55 MG/ML (รพ.ผลิตเอง; NED-M) <br>
+	CEFTAZIDIME EYE DROP 50 MG/ML (รพ.ผลิตเอง; NED-M) <br>
+	MOXIFLOXACIN EYE DROP   5 MG/ML <br>
+	VANCOMYCIN EYE DROP  50 MG/ML (รพ.ผลิตเอง; NED-M) <br>
+     11.1.2  ANTIBACTERIALS WITH CORTICOSTEROIDS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	DEXAMETHASONE SODIUM PHOSPHATE + NEOMYCIN SULFATE EYE/EAR DROP   4 ML <br>
+	DEXAMETHASONE + NEOMYCIN SULFATE + POLYMYXIN B SULFATE EYE OINT 3.5 GM <br>
+	(MAXITROL®) (STAFF) <br>
+     11.1.3  ANTIFUNGALS <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	AMPHOTERICIN B EYE DROP  2.5 MG/ML (รพ.ผลิตเอง; NED-M) <br>
+   11.2  CORTICOSTEROIDS AND OTHER ANTI-INFLAMMATORY PREPARATIONS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ANTAZOLINE HCL 0.05% + TETRAHYDROZOLINE HCL 0.04% EYE DROP 10 ML (HISTA-OPH®) <br>
+          บัญชี ค <br>	PREDNISOLONE EYE DROP   1% IN 5 ML (STAFF) <br>
+          บัญชี ง <br>	OLOPATADINE HCL EYE DROP   1 MG/ML (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	LOTEPREDNOL ETABONATE EYE DROP   0.5% (STAFF; NED-F) <br>
+   11.3  MYDRIATRICS AND CYCLOPLEGICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	ATROPINE EYE DROP   1% (STAFF จักษุแพทย์, Palliative) <br>
+	PHENYLEPHRINE EYE DROP   10 % (STAFF) <br>
+	TROPICAMIDE EYE DROP   1% IN 15ML (MYDRIACYL®) (STAFF) <br>
+   11.4  DRUGS FOR TREATMENT OF GLAUCOMA <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ACETAZOLAMIDE TAB   250 MG <br>
+	GLYCEROL SOL   100% <br>
+	PILOCARPINE EYE DROP   2% IN 15 ML <br>
+	TIMOLOL EYE DROP   0.5% <br>
+          บัญชี ค <br>	BRIMONIDINE TARTRATE EYE DROP   0.2% (ALPHAGAN®) <br>
+	DORZOLAMIDE EYE DROP   20 MG/ML (TRUSOPT®) (STAFF) <br>
+	LATANOPROST EYE DROP   0.005% IN 2.5 ML (XALATAN®) <br>
+          บัญชี ง <br>	DORZOLAMIDE HCL 2% + TIMOLOL MALEATE 0.5% EYE DROP (COSOPT®) (STAFF จักษุแพทย์) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	BIMATOPROST EYE DROP   0.01% IN 3 ML (LUMIGAN®) <br>
+   11.5  LOCAL ANAESTHETICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	TETRACAINE EYE DROP  0.5% <br>
+   11.6  TEAR DEFICIENCY, OCULAR LUBRICANTS AND ASTRINGENTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	HYDROXYPROPYL METHYLCELLULOSE EYE DROP   0.5% IN 10 ML (LAC-OPH®) <br>
+          บัญชี ข <br>	CARBOMER + SORBITOL + CETRIMIDE EYE GEL (VIDISIC®) <br>
+          บัญชี ง <br>	HYPROMELLOSE 0.3% + DEXTRAN 70   0.1% EYE DROP (LUBRIC®) (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	SODIUM HYALURONATE EYE DROPS 0.18% (VISLUBE®) (STAFF จักษุแพทย์) <br>
+   11.7  OCULAR DIAGNOSTIC AND PERI-OPERATIVE PREPARATIONS AND PHOTODYNAMIC TREATMENT <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	BALANCE SALT SOL (BSS)   100 ML (zero stock) <br>
+	BALANCE SALT SOL (BSS)   500 ML <br>
+</p></div>
+<div class='data'>
+<p class='data'>
+12  EAR, NOSE, OROPHARYNX AND ORAL CAVITY <br>
+   12.1  DRUGS ACTING ON THE EAR <br>
+     12.1.1  OTITIS EXTERNA AND OTITIS MEDIA <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CHLORAMPHENICOL EAR DROP   1 % <br>
+     12.1.3  OTHER DRUGS ACTING ON THE EAR <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	OFLOXACIN EAR DROP   0.3% (TARIVID®) <br>
+   12.2  DRUG ACTING ON THE NOSE <br>
+     12.2.1  DRUGS USED IN NASAL ALLERGY <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ข <br>	BUDESONIDE NASAL SPRAY   64 MCG/DOSE (RHINOCORT®) <br>
+          บัญชี ค <br>	FLUTICASONE FUROATE NASAL SPRAY   27.5 MCG/DOSE (AVAMYS®) (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	MOMETASONE FUROATE MONOHYDRATE NASAL SPRAY   50 MCG/DOSE (140 DOSE) (STAFF) <br>
+     12.2.2  TOPICAL NASAL DECONGESTANTS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	EPHEDRINE NASAL DROP   1% IN 10 ML (รพ.ผลิตเอง) <br>
+	SODIUM CHLORIDE FOR IRRIGATION   0.9% IN 1,000 ML <br>
+          บัญชี ข <br>	OXYMETAZOLINE NASAL SPRAY   0.05% IN 15 ML <br>
+   12.3  DRUGS ACTING ON THE OROPHARYNX AND ORAL CAVITY <br>
+     12.3.1  DRUG USED IN TREATMENT OF ORAL ULCER <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	IODINE PAINT COMPOUND SOL (MANDL'S)   1.25% <br>
+	TRIAMCINOLONE ORAL PASTE   1 GM <br>
+     12.3.2  OROPHARYNGEAL ANTIFUNGAL DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	NYSTATIN SUSP   100,000 U/ML IN 12 ML <br>
+     12.3.3  ANTISEPTICS FOR ROOT CANAL TREATMENT <br>
+     12.3.4  DRUGS USED IN PREVENTION AND TREATMENT OF DENTAL PLAQUE AND CARIES <br>
+     12.3.5  OTHER DENTAL PREPARATIONS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	SPECIAL MOUTH WASH SOL (SMW) (รพ.ผลิตเอง) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	XYLOCAIN + GLYCERINE SOL (1% XZG) IN 30 ML (รพ.ผลิตเอง) <br>
+</p></div>
+<div class='data'>
+<p class='data'>
+13  SKIN
+   13.1  ANTI-INFECTIVE SKIN PREPARATIONS <br>
+     13.1.1  ANTIBACTERIAL PREPARATIONS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	SILVER SULFADIAZINE CREAM   1% <br>
+          บัญชี ข <br>	FUSIDIC ACID CERAM   2% IN 5 GM <br>
+	FUSIDIC ACID CREAM   2% IN 15 GM <br>
+	SODIUM FUSIDATE OINT 2% IN 15 GM <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	MOIST EXPOSED BURN OINT IN 40 GM (MEBO®) (STAFF SKIN; NED-F) <br>
+      13.1.2  ANTIFUNGAL PREPARATIONS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CLOTRIMAZOLE CREAM   1% IN 15 GM <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	NYSTATIN + GRAMICIDIN + TRIAMCINOLONE ACETONIDE + NEOMYCIN OINT IN 5 GM (KENACOMB®) <br>
+	KETOCONAZOLE SHAMPOO 2% IN 100 ML (STAFF SKIN) <br>
+     13.1.3  PARASITICIDAL PREPARATIONS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	BENZYL BENZOATE LOTION   25% <br>
+	PERMETHRIN LOTION   5% IN 30 ML <br>
+          บัญชี ข <br>	IVERMECTIN TAB   6 MG (ยากำพร้า) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	SULFUR IN CALAMINE   5% ((รพ.ผลิตเอง) <br>
+   13.2  EMOLLIENT AND BARRIER PREPARATIONS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	OLIVE OIL IN 450 ML <br>
+	UREA CREAM   10% <br>
+	UREA CREAM   20% IN 35 GM <br>
+	ZINC OXIDE PASTE  (รพ.ผลิตเอง) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	CREAM BASE  5 G (รพ.ผลิตเอง; NED-M) <br>
+	LUBRICANT JELLY   5 GM <br>
+	LUBRICANT JELLY   50 GM <br>
+
+   13.3  TOPICAL ANTIPRURITICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CALAMINE LOTION IN 60 ML <br>
+   13.4  TOPICAL CORTICOSTEROIDS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	BETAMETHASONE DIPROPIONATE CREAM   0.05% IN 5 GM <br>
+	BETAMETHASONE DIPROPIONATE CREAM   0.05% IN 15 GM <br>
+	CLOBETASOL PROPIONATE CREAM   0.05% IN 5 GM <br>
+	CLOBETASOL PROPIONATE CREAM   0.05% IN 15 GM <br>
+	HYDROCORTISONE ACETATE CREAM   1% IN 5 GM <br>
+	TRIAMCINOLONE ACETONIDE CREAM   0.02% IN 5 GM <br>
+	TRIAMCINOLONE ACETONIDE CREAM   0.02% IN 15 GM <br>
+	TRIAMCINOLONE ACETONIDE CREAM   0.1% IN 5 GM <br>
+	TRIAMCINOLONE ACETONIDE CREAM   0.1% IN 15 GM <br>
+          บัญชี ข <br>	DESOXIMETASONE CREAM   0.25% IN 15 GM (TOPICORTE®) <br>
+          บัญชี ค <br>	BETAMETHASONE DIPROPIONATE + SALICYLIC ACID OINT 15 GM (STAFF SKIN) <br>
+	CLOBETASOL PROPIONATE OINT   0.05% IN 15 GM <br>
+          บัญชี ง <br>	   BETAMETHASONE DIPROPIONATE 0.5 MG + CALCIPOTRIOL 50 MCG OINT IN 15 GM (DAIVOBET®) <br>
+	   (STAFF SKIN) <br>
+	CLOBETASOL PROPIONATE SCALP LOTION   30 ML (STAFF SKIN) <br>
+	MOMETASONE FUROATE CREAM 0.1% IN 15 GM (STAFF SKIN) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	BETAMETHASONE DIPROPIONATE LOTION   30 ML (STAFF SKIN; NED-F) <br>
+	BETAMETHASONE 0.1% + FUSIDIC ACID 2% CREAM IN 5 GM (AXCEL®) (STAFF SKIN) <br>
+	BETAMETHASONE 0.1% + FUSIDIC ACID 2% CREAM IN 15 GM (STAFF SKIN) <br>
+	BETAMETHASONE DIPROPIONATE + SALICYLIC ACID LOTION   30 ML (STAFF SKIN; NED-F) <br>
+	ECONAZOLE 10 MG + TRIAMCINOLONE ACETONIDE 1 MG CREAM IN 15 GM (TRICOZOLE®) <br>
+	(STAFF SKIN) <br>
+	HYDROCORTISONE ACETATE OINT   1% IN 15 GM (STAFF SKIN; NED-Z) <br>
+	SALICYLIC ACID 5% IN TRIAMCINOLONE ACETONIDE 0.02% LOTION (รพ.ผลิตเอง) <br>
+	SALICYLIC ACID 5% IN TRIAMCINOLONE ACETONIDE 0.1% CREAM (รพ.ผลิตเอง) <br>
+   13.5  OTHER PREPARATIONS FOR PSORIASIS (EXCLUDING TOPICAL CORTICOSTEROIDS) <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	COAL TAR CREAM   5% IN 50 GM (รพ.ผลิตเอง) <br>
+	COAL TAR SHAMPOO   5% (รพ.ผลิตเอง) <br>
+          บัญชี ง <br>	ACITRETIN CAP   10 MG (STAFF SKIN) <br>
+	CALCIPOTRIOL OINT   50 MCG/GM IN 30 GM (STAFF SKIN) <br>
+	CICLOSPORIN CAP   25 MG (STAFF SKIN) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	SALICYLIC ACID CREAM   5% IN 15 GM (รพ.ผลิตเอง; NED-F) <br>
+  13.6  PREPARATIONS FOR WARTS AND CALLUSES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	PODOPHYLLIN PAINT 25% IN 450 ML (zero stock) <br>
+   13.7  OTHER PRODUCT FOR SKIN <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CLOFAZIMINE TAB   50 MG (STAFF SKIN) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ACNE LOTION (ผลิต) <br>
+	ADAPALENE 0.1% + BENZOYL PEROXIDE 2.5% GEL IN 15 GM (EPIDUO®) (STAFF SKIN; NED-F) <br>
+	AESCIN 1 GM + DIETHYLAMINE SALICYLATE 5 GM GEL IN 40 GM (REPRARIL®) (STAFF SKIN; NED-F) <br>
+	AZELAIC ACID CREAM   20% IN 30 GM (SKINOREN®) (STAFF SKIN; NED-F) <br>
+	BILASTINE TAB   20 MG (STAFF SKIN) <br>
+	BOTULINUM A TOXIN INJ   50 U (STAFF SKIN; zero stock; NED-F) <br>
+	BENZOYL PEROXIDE GEL   2.5% IN 20 GM (STAFF SKIN; NED-F) <br>
+	BENZOYL PEROXIDE GEL   5% IN 20 GM (STAFF SKIN; NED-F) <br>
+	BURROW’ SOLUTION <br>
+	CLINDAMYCIN PHOSPHATE GEL   1% IN 15 GM (STAFF SKIN; NED-F) <br>
+	GENTLE CLEANSER GEL IN 100 ML (STAFF SKIN) <br>
+	HYDROQUINONE GEL   2% IN 7 GM (STAFF SKIN; NED-F) <br>
+	HYDROQUINONE GEL   4% IN 7 GM (STAFF SKIN; NED-F) <br>
+	HYDROQUINONE 4% + TRETINOIN 0.05% + FLUOCINOLONE 0.01% GEL IN 15 GM (TRI-LUMA®) <br>
+   	(STAFF SKIN; NED-F) <br>
+	IMIQUIMOD CREAM   5% IN 0.25 GM (ALDARA®) (STAFF SKIN; NED-Z) <br>
+	ISOTRETINOIN CAP   10 MG (STAFF SKIN; NED-F) <br>
+	METRONIDAZOLE GEL   0.75% IN 30 GM (STAFF SKIN; NED-F) <br>
+	MINOXIDIL SPRAY   3% IN 60 ML (STAFF SKIN; NED-F) <br>
+	MINOXIDIL SPRAY   5% IN 60 ML (STAFF SKIN; NED-F) <br>
+	PAPULEX OIL FREE CREAM IN 40 ML (STAFF SKIN) <br>
+	TACROLIMUS OINT   0.1% IN 10 GM (STAFF SKIN; NED-Z) <br>
+	TOPICAL SILICONE GEL IN 15 GM (STAFF SKIN) <br>
+	TRETINOIN CREAM   0.025% IN 10 GM (STAFF SKIN; NED-F) <br>
+	TRETINOIN CREAM   0.05% IN 10 GM (STAFF SKIN; NED-F) <br>
+	WHITENING ACTIVE PLUS CREAM IN 15 GM (STAFF SKIN) <br>
+</p></div>
+<div class='data'>
+<p class='data'>
+14  IMMUNOLOGICAL PRODUCTS AND VACCINES <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ANTI-D IMMUNOGLOBULINS INJ PRE-FILL SYRING   1,500 IU/2 ML (IGAMAD®) (ยากำพร้า) <br>
+	BCG VACCINE INJ <br>
+	DIPHTHERIA-TETANUS VACCINE (dT) INJ <br>
+	DIPHTHERIA-TETANUS-PERTUSSIS VACCINE (WHOLE CELL) (DTPw) INJ <br>
+	HEPATITIS B VACCINE (HB) INJ   5 MCG/0.5 ML <br>
+	HEPATITIS B VACCINE INJ   10 MCG/ML <br>
+	JAPANESE ENCEPHALITIS VACCINE INJ   0.5 ML <br>
+	MEASLES-MUMPS-RUBELLA VACCINE (MMR) INJ <br>
+	POLIOMYELITIS VACCINE (OPV) INJ <br>
+
+          บัญชี ก <br>	RABIES IMMUNOGLOBULIN, HORSE (ERIG) INJ   1,000 IU/5 ML <br>
+	RABIES VACCINE INJ (PCEC®, VERORAB®) <br>
+          บัญชี  ข	RABIES IMMUNOGLOBULIN, HUMAN (HRIG) INJ   300 IU/2 ML <br>
+	TETANUS ANTITOXIN, HUMAN INJ <br>
+          บัญชี ค <br>	HEPATITIS B IMMUNOGLOBULIN (HBIG) INJ   100 IU/ML (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	DIPHTHERIA-TETANUS-PERTUSSIS (DTaP) VACCINE INJ (ACELLULAR) (zero stock) <br>
+	HAEMOPHILUS INFLUENZAE (HIB) VACCINE INJ (STAFF; NED-F) <br>
+	PNEUMOCOCCAL CONJUGATE VACCINE (PCV13) (PREVNAR 13®) (STAFF; NED-F) <br>
+	PNEUMOCOCCAL POLYSACCHARIDE VACCINE (PPSV23) (PNEUMOVAX 23®) (STAFF; NED-F) <br>
+	RECOMBINANT ACELLULAR PERTUSSIS (aP) VACCINE INJ (NED-F) <br>
+</p></div>
+<div class='data'>
+<p class='data'>
+15  ANAESTHESIA <br>
+   15.1  GENERAL ANAESTHESIA <br>
+     15.1.1  INTRAVENOUS ANAESTHETICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	ETOMIDATE INJ   20 MG/10 ML (STAFF; fix stock) <br>
+	PROPOFOL INJ   10 MG/ML IN 20 ML <br>
+	THIOPENTAL SODIUM INJ   1 GM <br>
+          บัญชี ง <br>	KETAMINE HCL INJ   500 MG/10 ML (STAFF) <br>
+     15.1.2  INHALATIONAL ANAESTHETICS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	ISOFLURANE SOL   250 ML <br>
+	SEVOFLURANE SOL   250 ML <br>
+          บัญชี ง <br>	DESFLURANE SOL    240 ML <br>
+     15.1.3  MUSCLE RELAXANTS (NEUROMUSCULAR BLOCKING DRUGS) <br>
+           <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+           บัญชี ค <br>	CISATRACURIUM BESYLATE INJ   10 MG/ 5 ML (NIMBEX®) <br>
+	PANCURONIUM BROMIDE INJ   4 MG/2 ML (PAVULON®) <br>
+	ROCURONIUM  BROMIDE INJ   50 MG/5 ML (ESMERON®) <br>
+	SUXAMETHONIUM CHLORIDE INJ   500 MG (SUCCINYL®) <br>
+	VERCURONIUM INJ   10 MG/5 ML (NORCURON®) <br>
+     15.1.4  SEDATIVE AND ANALGESIC PERI-OPERATIVE DRUGS <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	DIAZEPAM TAB   2 MG <br>
+	DIAZEPAM TAB   5 MG <br>
+	DIAZEPAM INJ   10 MG/2 ML <br>
+          บัญชี ค <br>	FENTANYL INJ   0.1 MG/2 ML <br>
+	MORPHINE SULFATE INJ   10 MG/ML <br>
+	PETHIDINE INJ   50 MG/ML <br>
+
+          บัญชี ง <br>	MIDAZOLAM HCL INJ   5 MG/ML (STAFF) <br>
+	MIDAZOLAM HCL INJ  15 MG/3 ML (STAFF) <br>
+     15.1.5  ANTICHOLINESTERASES AND ANTIMUSCARINIC DRUGS USE IN ANAESTHESIA <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ATROPINE SULPHATE INJ   0.6 MG/ML <br>
+	NEOSTIGMINE INJ   2.5 MG/ML (PROSTIGMINE®) <br>
+     15.1.6  DRUGS FOR MALIGNANT HYPERTHERMIA <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ง <br>	DANTROLENE SODIUM INJ   20 MG <br>
+   15.2  LOCAL ANAESTHESIA <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	LIDOCAINE HCL INJ   1% IN 50 ML <br>
+	LIDOCAINE HCL INJ   2% IN 50 ML <br>
+	LIDOCAINE JELLY   2% IN 30 GM (XYLOCAINE®) <br>
+	LIDOCAINE SPRAY   10% IN 10 MG (XYLOCAINE®) <br>
+	LIDOCAINE HCL 1% + ADRENALINE (EPINEPHRINE) INJ   50 ML <br>
+	LIDOCAINE HCL 2% + ADRENALINE (EPINEPHRINE) INJ   50 ML <br>
+	LIDOCAINE HCL (DENTAL CARTRIDGE) 2% IN 1.8 ML + ADRENALINE (EPINEPHRINE) INJ (1:100,000) <br>
+	MEPIVACAINE HCL INJ   3% (DENTAL CARTRIDGE; ZERO STOCK) <br>
+          บัญชี ค <br>	BUPIVACAINE HCL INJ   0.5% IN 4 ML (HEAVY MARCAINE®) <br>
+	BUPIVACAINE HCL INJ   0.5% IN 10 ML <br>
+	BUPIVACAINE ISOBARIC INJ   0.5% IN 4 ML (zero stock) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ARTICAINE (DENTAL CARTRIDGE) 4% + ADRENALINE (EPINEPHRINE) INJ (1:100,000) <br>
+	LIDOCAINE 2.5% + PRILOCAINE 2.5% CREAM IN 30 GM (EMLA®) (NED-F) <br>
+</p></div>
+<div class='data'>
+<p class='data'>
+16  DRUGS USED IN POISONING AND TOXICOLOGY <br>
+   16.1  SNAKEBITE POISONING <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	MALAYAN PIT VIPER ANTIVENIN INJ เซรุ่มแก้พิษงูกะปะ <br>
+	COBRA ANTIVENIN INJ เซรุ่มแก้พิษงูเห่าชนิดผงแห้ง <br>
+	HEMATO POLYVALENT SNAKE ANTIVENIN INJ เซรุ่มแก้พิษงูระบบโลหิต <br>
+	NEURO POLYVALENT SNAKE ANTIVENIN INJ เซรุ่มแก้พิษงูระบบประสาท <br>
+   16.2  MUSHROOM AND MICROBIAL POISONING <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ACETYLCYSTEINE INJ   300 MG/3 ML (FLUMUCIL®) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ACETYLCYSTEINE POWDER   200 MG/3 GM (NED-F) <br>
+ <br>
+
+   16.3  PESTICIDE & HERBICIDE POISONING <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ATROPINE SULPHATE INJ   0.6 MG/ML <br>
+	PRALIDOXIME INJ   1 GM (2-PAM®) <br>
+          บัญชี ค <br>	CYCLOPHOSPHAMIDE INJ   1,000 MG (STAFF) <br>
+   16.4  CORROSIVE POISONING <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	CALCIUM GLUCONATE INJ   10% IN 10 ML <br>
+   16.5  METHANOL POISONING <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	LEUCOVORIN INJ   350 MG/VIAL (STAFF) <br>
+   16.6  HEAVY METAL POISONING <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ค <br>	DESFERRIOXAMINE MESILATE INJ 500 MG (DESFERAL®) (STAFF) <br>
+   16.7  CYANIDE AND HYDROGEN SULFIDE POISONING <br>
+   16.8  METHEMOGLOBINEMIA <br>
+   16.9  DRUG POISONING <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ACETYLCYSTEINE INJ   300 MG/3 ML (FLUMUCIL®) <br>
+	BENZTROPINE MESYLATE INJ   1 MG/ML IN 2 ML (COGENTIN®) <br>
+	CALCIUM GLUCONATE INJ   10% IN 10 ML <br>
+	NALOXONE HCL INJ   0.4 MG/ML <br>
+	SODIUM BICARBONATE INJ   7.5 % IN 50 ML <br>
+	VITAMIN K1 (PHYTOMENADIONE) INJ   10 MG/ML <br>
+          บัญชี ค <br>	PROTAMINE SULFATE INJ (ศูนย์หัวใจ) <br>
+          	LEUCOVORIN INJ   350 MG (STAFF) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	ACETYLCYSTEINE POWDER   200 MG/3 GM (NED-F) <br>
+   16.10  DRUG USED FOR ABSORPTION INHIBITION AND ELIMINATION OF TOXIN <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	ACTIVATED CHARCOAL POWDER   5 GM <br>
+	SODIUM BICARBONATE INJ   7.5 % IN 50 ML <br>
+
+</p></div>
+<div class='data'>
+<p class='data'>
+17  CONTRAST MEDIA AND RADIOPHARMACEUTICALS <br>
+   17.1  WATER SOLUBLE IODINATED CONTRAST MEDIA <br>
+     17.1.1  WATER SOLUBLE NON-IONIC IODINATED CONTRAST MEDIA FOR INTRAVASCULAR ADMINISTRATION <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ง <br>	IOPAMIDOL INJ   300 MGI/ML IN 100 ML <br>
+	IOPROMIDE INJ   300 MGI/ML IN 50 ML (ULTRAVIST®) <br>
+	IOPROMIDE INJ   370 MGI/ML IN 100 ML (ULTRAVIST®) <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	IOHEXOL INJ   300 MGI/ML IN 50 ML (OMNIPAQUE®) <br>
+	IOHEXOL INJ   350 MGI/ML IN 50 ML (OMNIPAQUE®) <br>
+     17.1.2  WATER SOLUBLE NON-IONIC IODINATED CONTRAST MEDIA FOR INTRA-CAVITARY ADMINISTRATION <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ง <br>	IOPAMIDOL INJ   300 MGI/ML IN 100 ML <br>
+	IOPROMIDE INJ   300 MGI/ML IN 50 ML (ULTRAVIST®) <br>
+     17.1.3  WATER SOLUBLE NON-IONIC IODINATED CONTRAST MEDIA FOR MYELOGRAPHY <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ง <br>	IOPAMIDOL INJ   300 MGI/ML IN 100 ML <br>
+   17.2  NON-IODINATED GASTROINTESTINAL X-RAY CONTRAST MEDIA <br>
+          <c class='c1'>ยาในบัญชียาหลักแห่งชาติ</c> <br>
+          บัญชี ก <br>	BARIUM SULFATE POWDER   5 KG <br>
+          <c class='c2'>ยานอกบัญชียาหลักแห่งชาติ</c> <br>
+	IOVERSOL INJ   350 MGI/ML IN 50 ML (OPTIRAY®) <br>
+   17.3  MAGNETIC RESONANCE CONTRAST MEDIA <br>
+   17.4  RADIOPHARMACEUTICALS <br>
+
+</p></div>
+
+<script>
+
+
+const inp = document.getElementById('in');
+inp.addEventListener("keyup", search, false);
+
+
+
+
+</script>
+
+  </body>
+</html>
