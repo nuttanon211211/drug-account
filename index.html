@@ -270,6 +270,36 @@ to {
       document.body.childNodes[p2p[n]].scrollIntoView();
 
     }
+    function scrollToA(n) {
+    let p2p = []
+      for (var i=0; i < document.body.childNodes.length; i++ ) {
+        // console.log('loop',i);
+        // console.log(document.body.childNodes[i].nodeName);
+        if (document.body.childNodes[i].nodeName == "DIV" ) {
+          // console.log('push',i);
+          //out.push(document.body.childNodes[i].innerText);
+          if (document.body.childNodes[i].className == "data" || document.body.childNodes[i].className == "datah") {
+            p2p.push(i);
+          }
+        }
+      }
+      let node = 0;
+      for (var i=0; i< document.body.childNodes[p2p[n]].childNodes.length; i++  ) {
+        if (document.body.childNodes[p2p[n]].childNodes[i].nodeName == "P" ) {
+          node = i;
+          break;
+      }
+      // document.body.childNodes[p2p[n]].scrollIntoView();
+      }
+      for (var i=0 ;i < document.body.childNodes[p2p[n]].childNodes[node].childNodes.length; i ++ ) {
+         if (document.body.childNodes[p2p[n]].childNodes[node].childNodes[i].nodeName == "A"  ) {
+          document.body.childNodes[p2p[n]].childNodes[node].childNodes[i].scrollIntoView()
+          break;
+      }
+      }
+
+
+    }
 
     function unhidePara(n) {
       let p2p = []
@@ -317,6 +347,7 @@ to {
       removeHighlightAll();
       // removeHighlight(n);
       highlight(word, n);
+      scrollToA(n);
     }
 
     function search() {
